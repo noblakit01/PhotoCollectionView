@@ -11,11 +11,11 @@ import UIKit
 class PhotoCollectionViewLayout: UICollectionViewLayout {
     
     var cacheAttributes = [UICollectionViewLayoutAttributes]()
-    var offset = CGPoint.zero
+    var nextOffset = CGPoint.zero
     var didLoad = false
     
-    var marginVer: CGFloat = 1
-    var marginHor: CGFloat = 1
+    var marginVer: CGFloat = 4
+    var marginHor: CGFloat = 4
     
     override func prepare() {
         super.prepare()
@@ -23,37 +23,53 @@ class PhotoCollectionViewLayout: UICollectionViewLayout {
         if didLoad {
             return
         }
-        let size = collectionView!.frame.size
+        guard let collectionView = collectionView as? PhotoCollectionView else {
+            return
+        }
         
-        for section in 0..<collectionView!.numberOfSections {
-            let count = collectionView!.numberOfItems(inSection: section)
-            let isVertical = true
-            for item in 0..<count {
-                let indexPath = IndexPath(item: item, section: section)
-                let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                
-                var width: CGFloat = 0
-                var height: CGFloat = 0
-                
-                if count == 1 {
-                    width = size.width
-                    height = size.height
-                } else if count < 5 {
-                    let remainCount = CGFloat(count - 1)
-                    if isVertical {
-                        width = (size.width - marginHor) / 2
-                        height = item == 0 ? size.height : (size.height - marginVer * (remainCount - 1)) / remainCount
+        let count = collectionView.images.count
+        guard count > 0 else {
+            return
+        }
+        cacheAttributes.removeAll()
+        
+        let size = collectionView.frame.size
+        let firstImageSize = collectionView.images.first!.size
+        let isVertical = firstImageSize.width < firstImageSize.height
+        for item in 0..<count {
+            let indexPath = IndexPath(item: item, section: 0)
+            let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+            var itemSize = CGSize.zero
+            let offset = nextOffset
+            
+            if count == 1 {
+                itemSize.width = size.width
+                itemSize.height = size.height
+            } else {
+                let remainCount = CGFloat(count - 1)
+                if isVertical {
+                    itemSize.width = (size.width - marginHor) / 2
+                    if item == 0 {
+                        itemSize.height = size.height
+                        nextOffset.x += itemSize.width + marginHor
                     } else {
-                        width = item == 0 ? size.width : (size.width - marginHor * (remainCount - 1)) / remainCount
-                        height = (size.height - marginVer) / 2
+                        itemSize.height = (size.height - marginVer * (remainCount - 1)) / remainCount
+                        nextOffset.y += itemSize.height + marginVer
+                    }
+                } else {
+                    itemSize.height = (size.height - marginVer) / 2
+                    if item == 0 {
+                        itemSize.width = size.width
+                        nextOffset.y += itemSize.height + marginVer
+                    } else {
+                        itemSize.width = (size.width - marginHor * (remainCount - 1)) / remainCount
+                        nextOffset.x += itemSize.width + marginHor
                     }
                 }
-                attribute.frame = CGRect(origin: offset, size: CGSize(width: width, height: height))
-                offset.x += width + 1
-                offset.y += height + 1
-                
-                cacheAttributes.append(attribute)
             }
+            attribute.frame = CGRect(origin: offset, size: itemSize)
+            
+            cacheAttributes.append(attribute)
         }
         didLoad = true
     }

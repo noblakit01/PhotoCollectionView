@@ -13,6 +13,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     lazy var imageView: UIImageView! = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         imageView.backgroundColor = .red
         return imageView
     }()
@@ -38,6 +40,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         rightAnchor.constraint(equalTo: moreLabel.rightAnchor).isActive = true
         topAnchor.constraint(equalTo: moreLabel.topAnchor).isActive = true
         bottomAnchor.constraint(equalTo: moreLabel.bottomAnchor).isActive = true
+        
+        backgroundColor = UIColor.white
     }
     
     required init?(coder aDecoder: NSCoder) {

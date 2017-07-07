@@ -10,35 +10,23 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet weak var imageCollectionView: PhotoCollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageCollectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoCell")
-        imageCollectionView.delegate = self
-        imageCollectionView.dataSource = self
+        imageCollectionView.images = [
+            UIImage(named: "dog-1")!,
+            UIImage(named: "dog-2")!,
+            UIImage(named: "dog-3")!,
+            UIImage(named: "dog-4")!,
+            UIImage(named: "dog-5")!
+        ]
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-}
-
-extension ViewController: UICollectionViewDelegate {
-    
-}
-
-extension ViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath)
-        return cell
     }
 }
 
