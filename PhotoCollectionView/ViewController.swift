@@ -15,12 +15,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imageCollectionView.count = 5
         imageCollectionView.images = [
             UIImage(named: "dog-1")!,
             UIImage(named: "dog-2")!,
             UIImage(named: "dog-3")!,
             UIImage(named: "dog-4")!,
-            UIImage(named: "dog-5")!
+            //UIImage(named: "dog-5")!
         ]
     }
 

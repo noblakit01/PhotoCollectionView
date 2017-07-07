@@ -23,6 +23,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor(white: 1.0, alpha: 0.4)
         label.isHidden = true
+        label.textAlignment = .center
         return label
     }()
     
