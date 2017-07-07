@@ -14,8 +14,8 @@ class PhotoCollectionViewLayout: UICollectionViewLayout {
     var nextOffset = CGPoint.zero
     var didLoad = false
     
-    var marginVer: CGFloat = 4
-    var marginHor: CGFloat = 4
+    var marginVer: CGFloat = 1
+    var marginHor: CGFloat = 1
     
     override func prepare() {
         super.prepare()
@@ -27,7 +27,7 @@ class PhotoCollectionViewLayout: UICollectionViewLayout {
             return
         }
         
-        let count = collectionView.images.count
+        let count = min(collectionView.images.count, collectionView.numberOfItems(inSection: 0))
         guard count > 0 else {
             return
         }
@@ -68,19 +68,12 @@ class PhotoCollectionViewLayout: UICollectionViewLayout {
                 }
             }
             attribute.frame = CGRect(origin: offset, size: itemSize)
-            
             cacheAttributes.append(attribute)
         }
         didLoad = true
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        var layoutAttributes = [UICollectionViewLayoutAttributes]()
-        for attributes in cacheAttributes {
-            if attributes.frame.intersects(rect) {
-                layoutAttributes.append(attributes)
-            }
-        }
-        return layoutAttributes
+        return cacheAttributes
     }
 }

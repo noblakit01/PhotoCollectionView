@@ -31,6 +31,11 @@ class PhotoCollectionView: UICollectionView {
         collectionViewLayout = photoLayout
         register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: photoCellIdentifier)
     }
+    
+    override func reloadData() {
+        super.reloadData()
+        photoLayout.didLoad = false
+    }
 }
 
 extension PhotoCollectionView: UICollectionViewDataSource {

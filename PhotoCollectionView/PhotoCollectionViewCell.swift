@@ -29,17 +29,17 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(imageView)
-        leftAnchor.constraint(equalTo: imageView.leftAnchor).isActive = true
-        rightAnchor.constraint(equalTo: imageView.rightAnchor).isActive = true
-        topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+        contentView.addSubview(imageView)
+        contentView.leftAnchor.constraint(equalTo: imageView.leftAnchor).isActive = true
+        contentView.rightAnchor.constraint(equalTo: imageView.rightAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
         
-        addSubview(moreLabel)
-        leftAnchor.constraint(equalTo: moreLabel.leftAnchor).isActive = true
-        rightAnchor.constraint(equalTo: moreLabel.rightAnchor).isActive = true
-        topAnchor.constraint(equalTo: moreLabel.topAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: moreLabel.bottomAnchor).isActive = true
+        contentView.addSubview(moreLabel)
+        contentView.leftAnchor.constraint(equalTo: moreLabel.leftAnchor).isActive = true
+        contentView.rightAnchor.constraint(equalTo: moreLabel.rightAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: moreLabel.topAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: moreLabel.bottomAnchor).isActive = true
         
         backgroundColor = UIColor.white
     }
