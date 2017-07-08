@@ -30,7 +30,7 @@ open class PhotoCollectionView: UIView {
         }
     }
     
-    func reloadData() {
+    open func reloadData() {
         while photoViews.count > 0 {
             let view = photoViews.removeFirst()
             view.removeFromSuperview()
