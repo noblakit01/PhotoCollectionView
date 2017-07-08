@@ -28,9 +28,9 @@ class PhotoCollectionView: UIView {
     
     func reloadData() {
         print("Luan bounds")
-        while cells.count > 0 {
-            let cell = cells.removeFirst()
-            cell.removeFromSuperview()
+        while photoViews.count > 0 {
+            let view = photoViews.removeFirst()
+            view.removeFromSuperview()
         }
         
         guard let dataSource = dataSource else {
