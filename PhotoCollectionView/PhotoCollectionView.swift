@@ -8,53 +8,85 @@
 
 import UIKit
 
-class PhotoCollectionView: UICollectionView {
-    
-    fileprivate var photoLayout = PhotoCollectionViewLayout()
-    fileprivate let photoCellIdentifier = "PhotoCell"
-    fileprivate var numItems = 0
-    
-    var count: Int = 0
-    var images = [UIImage]()
+protocol PhotoCollectionViewDataSource: class {
+    func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage
+    func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int
+}
+
+class PhotoCollectionView: UIView {
+    var margin: CGFloat = 1
     var maxImage = 4
+    var cells: [PhotoCollectionViewCell] = []
     
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: layout)
-        initLayout()
+    weak var dataSource: PhotoCollectionViewDataSource?
+    
+    override var bounds: CGRect {
+        didSet {
+            reloadData()
+        }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        initLayout()
-    }
-    
-    fileprivate func initLayout() {
-        backgroundColor = UIColor.white
-        dataSource = self
-        collectionViewLayout = photoLayout
-        register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: photoCellIdentifier)
-    }
-    
-    override func reloadData() {
-        super.reloadData()
-        photoLayout.didLoad = false
+    func reloadData() {
+        print("Luan bounds")
+        while cells.count > 0 {
+            let cell = cells.removeFirst()
+            cell.removeFromSuperview()
+        }
+        
+        guard let dataSource = dataSource else {
+            return
+        }
+        let numImage = dataSource.numPhotos(in: self)
+        let numShow = min(maxImage, numImage)
+        
+        let size = bounds.size
+        var isVertical = false
+        var nextOffset = CGPoint.zero
+        
+        for i in 0..<numShow {
+            let image = dataSource.photoColletionView(self, imageAt: i)
+            if i == 0 {
+                isVertical = image.size.width < image.size.height
+            }
+            var itemSize = CGSize.zero
+            let offset = nextOffset
+            
+            if numShow == 1 {
+                itemSize.width = size.width
+                itemSize.height = size.height
+            } else {
+                let remainCount = CGFloat(numShow - 1)
+                if isVertical {
+                    itemSize.width = (size.width - margin) / 2
+                    if i == 0 {
+                        itemSize.height = size.height
+                        nextOffset.x += itemSize.width + margin
+                    } else {
+                        itemSize.height = (size.height - margin * (remainCount - 1)) / remainCount
+                        nextOffset.y += itemSize.height + margin
+                    }
+                } else {
+                    itemSize.height = (size.height - margin) / 2
+                    if i == 0 {
+                        itemSize.width = size.width
+                        nextOffset.y += itemSize.height + margin
+                    } else {
+                        itemSize.width = (size.width - margin * (remainCount - 1)) / remainCount
+                        nextOffset.x += itemSize.width + margin
+                    }
+                }
+            }
+
+            let cell = PhotoCollectionViewCell(frame: CGRect(origin: offset, size: itemSize))
+            cell.imageView.image = image
+            if numImage > maxImage && i == numShow - 1 {
+                cell.moreLabel.isHidden = false
+                cell.moreLabel.text = "+\(numImage - numShow)"
+            }
+            cells.append(cell)
+            addSubview(cell)
+        }
     }
 }
 
-extension PhotoCollectionView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        numItems = min(count, maxImage)
-        return numItems
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: photoCellIdentifier, for: indexPath) as! PhotoCollectionViewCell
-        cell.imageView.image = images[indexPath.row]
-        if count > maxImage && indexPath.item == numItems - 1 {
-            cell.moreLabel.isHidden = false
-            cell.moreLabel.text = "+\(count - numItems)"
-        }
-        return cell
-    }
-}
 
