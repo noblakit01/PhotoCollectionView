@@ -8,30 +8,29 @@
 
 import UIKit
 
-@objc protocol PhotoCollectionViewDataSource: class {
+@objc public protocol PhotoCollectionViewDataSource: NSObjectProtocol {
     func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage
     func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int
 }
 
 @IBDesignable
-class PhotoCollectionView: UIView {
+open class PhotoCollectionView: UIView {
     var margin: CGFloat = 1
     var maxImage = 4
     var photoViews: [PhotoView] = []
     
-    @IBOutlet weak var dataSource: PhotoCollectionViewDataSource?
-    @IBInspectable var moreTextColor = UIColor.white
-    @IBInspectable var moreTextFont = UIFont.systemFont(ofSize: 17)
-    @IBInspectable var moreTextBackgroundColor = UIColor(white: 0.2, alpha: 0.6)
+    weak open var dataSource: PhotoCollectionViewDataSource?
+    @IBInspectable open var moreTextColor: UIColor! = UIColor.white
+    @IBInspectable open var moreTextBackgroundColor: UIColor! = UIColor(white: 0.2, alpha: 0.6)
+    open var moreTextFont: UIFont! = UIFont.systemFont(ofSize: 17)
     
-    override var bounds: CGRect {
+    override open var bounds: CGRect {
         didSet {
             reloadData()
         }
     }
     
     func reloadData() {
-        print("Luan bounds")
         while photoViews.count > 0 {
             let view = photoViews.removeFirst()
             view.removeFromSuperview()

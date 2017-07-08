@@ -15,7 +15,7 @@ class PhotoView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .red
+        imageView.backgroundColor = .black
         return imageView
     }()
     
@@ -28,7 +28,7 @@ class PhotoView: UIView {
         topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
         bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
         
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.black
     }
     
     required init?(coder aDecoder: NSCoder) {
