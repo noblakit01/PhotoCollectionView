@@ -78,7 +78,7 @@ class PhotoCollectionView: UIView {
             }
 
             let photoView = PhotoView(frame: CGRect(origin: offset, size: itemSize))
-            photoView.image = image
+            photoView.setImage(image)
             if numImage > maxImage && i == numShow - 1 {
                 addMoreLabel(in: photoView, numMore: numImage - numShow)
             }
