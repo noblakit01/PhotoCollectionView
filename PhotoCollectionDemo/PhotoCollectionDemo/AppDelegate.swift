@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  PhotoCollectionView
+//  PhotoCollectionDemo
 //
-//  Created by Minh Luan Tran on 7/6/17.
-//  Copyright © 2017 Minh Luan Tran. All rights reserved.
+//  Created by luan on 7/8/17.
+//  Copyright © 2017 luantran. All rights reserved.
 //
 
 import UIKit
