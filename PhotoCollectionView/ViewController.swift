@@ -14,15 +14,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        imageCollectionView.count = 5
-        imageCollectionView.images = [
-            UIImage(named: "dog-1")!,
-            UIImage(named: "dog-2")!,
-            UIImage(named: "dog-3")!,
-            UIImage(named: "dog-4")!,
-            //UIImage(named: "dog-5")!
-        ]
+        imageCollectionView.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,3 +23,12 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: PhotoCollectionViewDataSource {
+    func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int {
+        return 5
+    }
+    
+    func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage {
+        return UIImage(named: "dog-\(index + 1)")!
+    }
+}
