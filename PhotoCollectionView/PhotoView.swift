@@ -23,10 +23,20 @@ class PhotoView: UIView {
         super.init(frame: frame)
         
         addSubview(imageView)
-        leftAnchor.constraint(equalTo: imageView.leftAnchor).isActive = true
-        rightAnchor.constraint(equalTo: imageView.rightAnchor).isActive = true
-        topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+        if #available(iOS 9.0, *) {
+            leftAnchor.constraint(equalTo: imageView.leftAnchor).isActive = true
+            rightAnchor.constraint(equalTo: imageView.rightAnchor).isActive = true
+            topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
+            bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+        } else {
+            let constraints = [
+                NSLayoutConstraint(item: imageView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: imageView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: imageView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0),
+            ]
+            addConstraints(constraints)
+        }
         
         backgroundColor = UIColor.black
     }
