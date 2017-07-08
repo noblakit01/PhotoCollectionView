@@ -8,17 +8,21 @@
 
 import UIKit
 
-protocol PhotoCollectionViewDataSource: class {
+@objc protocol PhotoCollectionViewDataSource: class {
     func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage
     func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int
 }
 
+@IBDesignable
 class PhotoCollectionView: UIView {
     var margin: CGFloat = 1
     var maxImage = 4
     var photoViews: [PhotoView] = []
     
-    weak var dataSource: PhotoCollectionViewDataSource?
+    @IBOutlet weak var dataSource: PhotoCollectionViewDataSource?
+    @IBInspectable var moreTextColor = UIColor.white
+    @IBInspectable var moreTextFont = UIFont.systemFont(ofSize: 17)
+    @IBInspectable var moreTextBackgroundColor = UIColor(white: 0.2, alpha: 0.6)
     
     override var bounds: CGRect {
         didSet {
@@ -90,8 +94,9 @@ class PhotoCollectionView: UIView {
     fileprivate func addMoreLabel(in photoView: PhotoView, numMore: Int) {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = UIColor(white: 0.4, alpha: 0.6)
-        label.textColor = UIColor.white
+        label.backgroundColor = moreTextBackgroundColor
+        label.textColor = moreTextColor
+        label.font = moreTextFont
         label.textAlignment = .center
         label.text = "+\(numMore)"
         
