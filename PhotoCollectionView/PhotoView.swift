@@ -18,15 +18,6 @@ class PhotoView: UIView {
         imageView.backgroundColor = .red
         return imageView
     }()
-    lazy var moreLabel: UILabel! = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = UIColor(white: 0.4, alpha: 0.6)
-        label.textColor = UIColor.white
-        label.isHidden = true
-        label.textAlignment = .center
-        return label
-    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,12 +27,6 @@ class PhotoView: UIView {
         rightAnchor.constraint(equalTo: imageView.rightAnchor).isActive = true
         topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
         bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
-        
-        addSubview(moreLabel)
-        leftAnchor.constraint(equalTo: moreLabel.leftAnchor).isActive = true
-        rightAnchor.constraint(equalTo: moreLabel.rightAnchor).isActive = true
-        topAnchor.constraint(equalTo: moreLabel.topAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: moreLabel.bottomAnchor).isActive = true
         
         backgroundColor = UIColor.white
     }
