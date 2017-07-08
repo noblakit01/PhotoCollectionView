@@ -16,7 +16,7 @@ protocol PhotoCollectionViewDataSource: class {
 class PhotoCollectionView: UIView {
     var margin: CGFloat = 1
     var maxImage = 4
-    var cells: [PhotoView] = []
+    var photoViews: [PhotoView] = []
     
     weak var dataSource: PhotoCollectionViewDataSource?
     
@@ -77,15 +77,29 @@ class PhotoCollectionView: UIView {
                 }
             }
 
-            let cell = PhotoView(frame: CGRect(origin: offset, size: itemSize))
-            cell.imageView.image = image
+            let photoView = PhotoView(frame: CGRect(origin: offset, size: itemSize))
+            photoView.imageView.image = image
             if numImage > maxImage && i == numShow - 1 {
-                cell.moreLabel.isHidden = false
-                cell.moreLabel.text = "+\(numImage - numShow)"
+                addMoreLabel(in: photoView, numMore: numImage - numShow)
             }
-            cells.append(cell)
-            addSubview(cell)
+            photoViews.append(photoView)
+            addSubview(photoView)
         }
+    }
+    
+    fileprivate func addMoreLabel(in photoView: PhotoView, numMore: Int) {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = UIColor(white: 0.4, alpha: 0.6)
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        label.text = "+\(numMore)"
+        
+        photoView.addSubview(label)
+        photoView.leftAnchor.constraint(equalTo: label.leftAnchor).isActive = true
+        photoView.rightAnchor.constraint(equalTo: label.rightAnchor).isActive = true
+        photoView.topAnchor.constraint(equalTo: label.topAnchor).isActive = true
+        photoView.bottomAnchor.constraint(equalTo: label.bottomAnchor).isActive = true
     }
 }
 
