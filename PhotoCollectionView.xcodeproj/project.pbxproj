@@ -15,7 +15,7 @@
 		FD7530C91F0F36AA0077237B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD7530C21F0F36AA0077237B /* Main.storyboard */; };
 		FD7530CA1F0F36AA0077237B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD7530C41F0F36AA0077237B /* Info.plist */; };
 		FD7530CB1F0F36AA0077237B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7530C51F0F36AA0077237B /* ViewController.swift */; };
-		FD7530D61F0F3CEB0077237B /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7530D51F0F3CEB0077237B /* PhotoCollectionViewCell.swift */; };
+		FD7530D61F0F3CEB0077237B /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7530D51F0F3CEB0077237B /* PhotoView.swift */; };
 		FD7530D81F0F406E0077237B /* PhotoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7530D71F0F406E0077237B /* PhotoCollectionView.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +50,7 @@
 		FD7530C31F0F36AA0077237B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD7530C41F0F36AA0077237B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD7530C51F0F36AA0077237B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FD7530D51F0F3CEB0077237B /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoCollectionViewCell.swift; path = PhotoCollectionView/PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		FD7530D51F0F3CEB0077237B /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoView.swift; path = PhotoCollectionView/PhotoView.swift; sourceTree = "<group>"; };
 		FD7530D71F0F406E0077237B /* PhotoCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoCollectionView.swift; path = PhotoCollectionView/PhotoCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,7 +135,7 @@
 		FD7530CC1F0F36C30077237B /* PhotoCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				FD7530D51F0F3CEB0077237B /* PhotoCollectionViewCell.swift */,
+				FD7530D51F0F3CEB0077237B /* PhotoView.swift */,
 				FD7530D71F0F406E0077237B /* PhotoCollectionView.swift */,
 			);
 			name = PhotoCollectionView;
@@ -280,7 +280,7 @@
 				FD7530CB1F0F36AA0077237B /* ViewController.swift in Sources */,
 				FD7530D81F0F406E0077237B /* PhotoCollectionView.swift in Sources */,
 				FD7530C61F0F36AA0077237B /* AppDelegate.swift in Sources */,
-				FD7530D61F0F3CEB0077237B /* PhotoCollectionViewCell.swift in Sources */,
+				FD7530D61F0F3CEB0077237B /* PhotoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

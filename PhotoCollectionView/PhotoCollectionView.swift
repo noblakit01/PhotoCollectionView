@@ -16,7 +16,7 @@ protocol PhotoCollectionViewDataSource: class {
 class PhotoCollectionView: UIView {
     var margin: CGFloat = 1
     var maxImage = 4
-    var cells: [PhotoCollectionViewCell] = []
+    var cells: [PhotoView] = []
     
     weak var dataSource: PhotoCollectionViewDataSource?
     
@@ -77,7 +77,7 @@ class PhotoCollectionView: UIView {
                 }
             }
 
-            let cell = PhotoCollectionViewCell(frame: CGRect(origin: offset, size: itemSize))
+            let cell = PhotoView(frame: CGRect(origin: offset, size: itemSize))
             cell.imageView.image = image
             if numImage > maxImage && i == numShow - 1 {
                 cell.moreLabel.isHidden = false
