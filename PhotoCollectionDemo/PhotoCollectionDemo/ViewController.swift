@@ -25,10 +25,10 @@ class ViewController: UIViewController {
 
 extension ViewController: PhotoCollectionViewDataSource {
     func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int {
-        return 5
+        return 10
     }
     
     func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage {
-        return UIImage(named: "dog-\(index + 1)")!
+        return UIImage(named: "image\(index + 1)")!
     }
 }
