@@ -50,9 +50,10 @@ Use can create instance of `PhotoCollectionView` by code:
 
 ```
 import PhotoCollectionView
+```
 
+```
 let photoCollectionView = PhotoCollectionView(frame: CGRect(x: 0, y: 0, width: 320, height: 240))
-
 ```
 
 or create an `UIView` in storyboard and Outlet it
@@ -67,7 +68,8 @@ or create an `UIView` in storyboard and Outlet it
 
 ```
 import PhotoCollectionView
-
+```
+```
 @IBOutlet weak var imageCollectionView: PhotoCollectionView!
 ```
 
