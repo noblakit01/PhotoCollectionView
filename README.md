@@ -14,4 +14,11 @@ Custom CollectionView like as Facebook Feed for iOS
   </tr>
 </table>
 
+## Requirements
+
+* iOS 8.0+
+* Xcode 8+
+* Swift 3
+
+
 
