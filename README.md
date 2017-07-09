@@ -94,7 +94,7 @@ extension ViewController: PhotoCollectionViewDataSource {
 - Set `dataSource` of PhotoCollectionView
 
 ```
-	imageCollectionView.dataSource = self
+imageCollectionView.dataSource = self
 ```
 
 ## License
