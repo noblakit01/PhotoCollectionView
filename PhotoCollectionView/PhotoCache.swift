@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoCache {
+public class PhotoCache {
     
     static let `default` = PhotoCache()
     
@@ -23,18 +23,18 @@ class PhotoCache {
             return
         }
         if let workItem = workItems.object(forKey: urlString as NSString) {
-            workItem.notify(queue: queue, execute: {
-                if let image = self.images.object(forKey: urlString as NSString) {
+            workItem.notify(queue: queue, execute: { [weak self] in
+                if let image = self?.images.object(forKey: urlString as NSString) {
                     completion(image)
                 }
             })
             return
         }
-        let workItem = DispatchWorkItem {
+        let workItem = DispatchWorkItem { [weak self] in
             do {
                 let data = try Data(contentsOf: url)
                 if let image = UIImage(data: data) {
-                    self.images.setObject(image, forKey: urlString as NSString)
+                    self?.images.setObject(image, forKey: urlString as NSString)
                     DispatchQueue.main.async {
                         completion(image)
                     }
