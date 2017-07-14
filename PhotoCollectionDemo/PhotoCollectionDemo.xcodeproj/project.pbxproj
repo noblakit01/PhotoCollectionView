@@ -14,6 +14,7 @@
 		0F37EC3A1F113E7F00A57341 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F37EC381F113E7F00A57341 /* Main.storyboard */; };
 		0F37EC3C1F113E7F00A57341 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F37EC3B1F113E7F00A57341 /* Assets.xcassets */; };
 		0F37EC3F1F113E7F00A57341 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F37EC3D1F113E7F00A57341 /* LaunchScreen.storyboard */; };
+		FD099F431F186FC2005B863D /* PhotoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD099F421F186FC2005B863D /* PhotoCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		0F37EC3B1F113E7F00A57341 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F37EC3E1F113E7F00A57341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F37EC401F113E7F00A57341 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD099F421F186FC2005B863D /* PhotoCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoCache.swift; path = ../PhotoCollectionView/PhotoCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			children = (
 				0F173C561F113F1300AD3225 /* PhotoCollectionView.swift */,
 				0F173C571F113F1300AD3225 /* PhotoView.swift */,
+				FD099F421F186FC2005B863D /* PhotoCache.swift */,
 			);
 			name = PhotoCollectionView;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			files = (
 				0F37EC371F113E7F00A57341 /* ViewController.swift in Sources */,
 				0F37EC351F113E7F00A57341 /* AppDelegate.swift in Sources */,
+				FD099F431F186FC2005B863D /* PhotoCache.swift in Sources */,
 				0F173C581F113F1300AD3225 /* PhotoCollectionView.swift in Sources */,
 				0F173C591F113F1300AD3225 /* PhotoView.swift in Sources */,
 			);

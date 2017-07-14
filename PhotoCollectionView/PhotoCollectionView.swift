@@ -9,8 +9,10 @@
 import UIKit
 
 @objc public protocol PhotoCollectionViewDataSource: NSObjectProtocol {
-    func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage
     func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int
+    
+    @objc optional func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage?
+    @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, urlImageAt index: Int) -> URL?
 }
 
 @IBDesignable
@@ -23,6 +25,7 @@ open class PhotoCollectionView: UIView {
     @IBInspectable open var moreTextColor: UIColor! = UIColor.white
     @IBInspectable open var moreTextBackgroundColor: UIColor! = UIColor(white: 0.2, alpha: 0.6)
     open var moreTextFont: UIFont! = UIFont.systemFont(ofSize: 17)
+    open var photoCache = PhotoCache.default
     
     override open var bounds: CGRect {
         didSet {
@@ -35,11 +38,14 @@ open class PhotoCollectionView: UIView {
             let view = photoViews.removeFirst()
             view.removeFromSuperview()
         }
-        
         guard let dataSource = dataSource else {
             return
         }
         let numImage = dataSource.numPhotos(in: self)
+        guard numImage > 0 else {
+            return
+        }
+        
         let numShow = min(maxImage, numImage)
         
         let size = bounds.size
@@ -47,9 +53,11 @@ open class PhotoCollectionView: UIView {
         var nextOffset = CGPoint.zero
         
         for i in 0..<numShow {
-            let image = dataSource.photoColletionView(self, imageAt: i)
-            if i == 0 {
-                isVertical = image.size.width < image.size.height
+            let image = dataSource.photoColletionView?(self, imageAt: i)
+            if let image = image {
+                if i == 0 {
+                    isVertical = image.size.width < image.size.height
+                }
             }
             var itemSize = CGSize.zero
             let offset = nextOffset
@@ -81,7 +89,11 @@ open class PhotoCollectionView: UIView {
             }
 
             let photoView = PhotoView(frame: CGRect(origin: offset, size: itemSize))
-            photoView.setImage(image)
+            if let image = image {
+                photoView.setImage(image)
+            } else if let url = dataSource.photoCollectionView?(self, urlImageAt: i) {
+                photoView.setUrl(url: url, photoCache: photoCache)
+            }
             if numImage > maxImage && i == numShow - 1 {
                 addMoreLabel(in: photoView, numMore: numImage - numShow)
             }
