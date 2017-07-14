@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 
-  s.name         = "PhotoCollection"
+  s.name         = "PhotoCollectionView"
   s.version      = "1.1.0"
   s.summary      = "Custom CollectionView like as Facebook Feed for iOS."
   s.description  = <<-DESC
