@@ -9,8 +9,10 @@
 import UIKit
 
 @objc public protocol PhotoCollectionViewDataSource: NSObjectProtocol {
-    func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage
     func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int
+    
+    @objc optional func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage?
+    @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, urlImageAt index: Int) -> URL?
 }
 
 @IBDesignable
@@ -47,9 +49,11 @@ open class PhotoCollectionView: UIView {
         var nextOffset = CGPoint.zero
         
         for i in 0..<numShow {
-            let image = dataSource.photoColletionView(self, imageAt: i)
-            if i == 0 {
-                isVertical = image.size.width < image.size.height
+            let image = dataSource.photoColletionView?(self, imageAt: i)
+            if let image = image {
+                if i == 0 {
+                    isVertical = image.size.width < image.size.height
+                }
             }
             var itemSize = CGSize.zero
             let offset = nextOffset
@@ -81,7 +85,11 @@ open class PhotoCollectionView: UIView {
             }
 
             let photoView = PhotoView(frame: CGRect(origin: offset, size: itemSize))
-            photoView.setImage(image)
+            if let image = image {
+                photoView.setImage(image)
+            } else if let url = dataSource.photoCollectionView?(self, urlImageAt: i) {
+                photoView.setUrl(url: url, photoCache: PhotoCache.default)
+            }
             if numImage > maxImage && i == numShow - 1 {
                 addMoreLabel(in: photoView, numMore: numImage - numShow)
             }
