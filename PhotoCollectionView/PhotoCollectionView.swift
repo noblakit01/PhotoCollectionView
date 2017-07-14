@@ -37,11 +37,14 @@ open class PhotoCollectionView: UIView {
             let view = photoViews.removeFirst()
             view.removeFromSuperview()
         }
-        
         guard let dataSource = dataSource else {
             return
         }
         let numImage = dataSource.numPhotos(in: self)
+        guard numImage > 0 else {
+            return
+        }
+        
         let numShow = min(maxImage, numImage)
         
         let size = bounds.size
