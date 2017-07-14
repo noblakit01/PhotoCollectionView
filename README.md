@@ -31,7 +31,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'PhotoCollectionView'
+pod 'PhotoCollectionView', '~> 1.1.0' 
 ```
 
 Then, run the following command:
@@ -41,7 +41,7 @@ $ pod install
 ```
 
 ### Manually
-- Drag and drop `PhotoCollectionView.swift` & `PhotoView.swift` files into your project
+- Drag and drop `PhotoCollectionView` folder into your project
 
 ## Usage
 
@@ -84,10 +84,17 @@ extension ViewController: PhotoCollectionViewDataSource {
         return 10
     }
     
-    func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage {
+    // You can use image for data
+    func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage? {
     	// return image need to show.
-        return UIImage(named: "image\(index + 1)")!
+        return UIImage(named: "image\(index + 1)")
     }
+
+    // or use image url
+    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, urlImageAt index: Int) -> URL? {
+        return URL(string: *your image URL here*)
+    }
+
 }
 ```
 
@@ -96,6 +103,10 @@ extension ViewController: PhotoCollectionViewDataSource {
 ```
 imageCollectionView.dataSource = self
 ```
+
+## Author
+
+Luan Tran - noblakit01@gmail.com
 
 ## License
 [MIT](http://thi.mit-license.org/)
