@@ -18,6 +18,19 @@ class PhotoView: UIView {
         imageView.backgroundColor = .black
         return imageView
     }()
+    lazy var loadingView: UIActivityIndicatorView! = {
+        let loadingView = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        loadingView.hidesWhenStopped = true
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addSubview(loadingView)
+        let constraints = [
+            NSLayoutConstraint(item: loadingView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: loadingView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0),
+            ]
+        self.addConstraints(constraints)
+        return loadingView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,5 +60,16 @@ class PhotoView: UIView {
     
     func setImage(_ image: UIImage) {
         imageView.image = image
+    }
+    
+    func setUrl(url: URL, photoCache: PhotoCache) {
+        loadingView.startAnimating()
+        photoCache.loadImage(atUrl: url, completion: { [weak self] image in
+            guard let sSelf = self else {
+                return
+            }
+            sSelf.imageView.image = image
+            sSelf.loadingView.stopAnimating()
+        })
     }
 }
