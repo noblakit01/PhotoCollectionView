@@ -8,15 +8,15 @@
 
 import UIKit
 
-public class PhotoCache {
+open class PhotoCache {
     
-    static let `default` = PhotoCache()
+    open static let `default` = PhotoCache()
     
     var queue = DispatchQueue(label: "PhotoCache")
     var workItems = NSCache<NSString, DispatchWorkItem>()
     var images = NSCache<NSString, UIImage>()
     
-    func loadImage(atUrl url: URL, completion: @escaping (UIImage?) -> Void) {
+    open func loadImage(atUrl url: URL, completion: @escaping (UIImage?) -> Void) {
         let urlString = url.absoluteString
         if let image = images.object(forKey: urlString as NSString) {
             completion(image)
@@ -49,5 +49,10 @@ public class PhotoCache {
         }
         workItems.setObject(workItem, forKey: urlString as NSString)
         queue.async(execute: workItem)
+    }
+    
+    open func clear() {
+        workItems.removeAllObjects()
+        images.removeAllObjects()
     }
 }
