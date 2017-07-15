@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "PhotoCollectionView"
-  s.version      = "1.1.0"
+  s.version      = "1.1.1"
   s.summary      = "Custom CollectionView like as Facebook Feed for iOS."
   s.description  = <<-DESC
                   Simple and highly customizable iOS list image for feed, in Swift. Like Facebook feed.
