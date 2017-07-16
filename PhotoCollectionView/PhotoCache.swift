@@ -16,6 +16,9 @@ open class PhotoCache {
     var workItems = NSCache<NSString, DispatchWorkItem>()
     var images = NSCache<NSString, UIImage>()
     
+    public init() {
+    }
+    
     open func loadImage(atUrl url: URL, completion: @escaping (UIImage?) -> Void) {
         let urlString = url.absoluteString
         if let image = images.object(forKey: urlString as NSString) {
