@@ -28,7 +28,9 @@ open class PhotoCache {
         if let workItem = workItems.object(forKey: urlString as NSString) {
             workItem.notify(queue: queue, execute: { [weak self] in
                 if let image = self?.images.object(forKey: urlString as NSString) {
-                    completion(image)
+                    DispatchQueue.main.async {
+                        completion(image)
+                    }
                 }
             })
             return
@@ -47,7 +49,9 @@ open class PhotoCache {
                     }
                 }
             } catch ( _) {
-                completion(nil)
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
             }
         }
         workItems.setObject(workItem, forKey: urlString as NSString)
