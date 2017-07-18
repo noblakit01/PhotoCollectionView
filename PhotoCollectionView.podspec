@@ -9,18 +9,16 @@
 Pod::Spec.new do |s|
 
   s.name         = "PhotoCollectionView"
-  s.version      = "1.1.3"
+  s.version      = "1.2.0"
   s.summary      = "Custom CollectionView like as Facebook Feed for iOS."
   s.description  = <<-DESC
                   Simple and highly customizable iOS list image for feed, in Swift. Like Facebook feed.
                   DESC
 
   s.homepage     = "https://github.com/noblakit01/PhotoCollectionView"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
   s.license      = "MIT"
 
-  # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.author             = { "noblakit" => "noblakit01@gmail.com" }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -32,7 +30,7 @@ Pod::Spec.new do |s|
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.source_files  = "PhotoCollectionView/*.swift"
+  s.source_files  = "Sources/*.swift"
   s.requires_arc = true
 
 end
