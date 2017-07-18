@@ -40,6 +40,7 @@
 			children = (
 				0F37EC331F113E7F00A57341 /* PhotoCollectionDemo */,
 				0F37EC321F113E7F00A57341 /* Products */,
+				0F3BD73A1F1E5B490003A218 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +63,13 @@
 				0F37EC401F113E7F00A57341 /* Info.plist */,
 			);
 			path = PhotoCollectionDemo;
+			sourceTree = "<group>";
+		};
+		0F3BD73A1F1E5B490003A218 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
