@@ -31,7 +31,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'PhotoCollectionView', '~> 1.1.3' 
+pod 'PhotoCollectionView', '~> 1.2.0' 
 ```
 
 Then, run the following command:
@@ -41,7 +41,7 @@ $ pod install
 ```
 
 ### Manually
-- Drag and drop `PhotoCollectionView` folder into your project
+- Drag and drop `Sources` folder into your project
 
 ## Usage
 
