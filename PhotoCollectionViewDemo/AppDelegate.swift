@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  PhotoCollectionDemo
+//  PhotoCollectionViewDemo
 //
-//  Created by luan on 7/8/17.
-//  Copyright © 2017 luantran. All rights reserved.
+//  Created by luan on 7/18/17.
+//
 //
 
 import UIKit

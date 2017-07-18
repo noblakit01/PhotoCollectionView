@@ -1,12 +1,13 @@
 //
 //  ViewController.swift
-//  PhotoCollectionView
+//  PhotoCollectionViewDemo
 //
 //  Created by Minh Luan Tran on 7/6/17.
 //  Copyright © 2017 Minh Luan Tran. All rights reserved.
 //
 
 import UIKit
+import PhotoCollectionView
 
 class ViewController: UIViewController {
 
