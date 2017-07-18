@@ -28,7 +28,6 @@
 		0F3BD7531F1E5B880003A218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		OBJ_10 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Example */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Example; sourceTree = SOURCE_ROOT; };
-		OBJ_13 /* PhotoCollectionDemo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PhotoCollectionDemo; sourceTree = SOURCE_ROOT; };
 		OBJ_15 /* PhotoCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PhotoCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_8 /* PhotoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCache.swift; sourceTree = "<group>"; };
@@ -90,7 +89,6 @@
 				OBJ_7 /* Sources */,
 				OBJ_11 /* Tests */,
 				OBJ_12 /* Example */,
-				OBJ_13 /* PhotoCollectionDemo */,
 				0F3BD7461F1E5B880003A218 /* PhotoCollectionViewDemo */,
 				OBJ_14 /* Products */,
 			);
