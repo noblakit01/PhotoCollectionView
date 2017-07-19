@@ -15,6 +15,10 @@ import UIKit
     @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, urlImageAt index: Int) -> URL?
 }
 
+@objc public protocol PhotoCollectionViewDelegate: NSObjectProtocol {
+    @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didSelectImageAt index: Int)
+}
+
 @IBDesignable
 open class PhotoCollectionView: UIView {
     var margin: CGFloat = 1
