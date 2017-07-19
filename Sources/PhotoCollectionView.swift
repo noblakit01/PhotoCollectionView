@@ -26,6 +26,8 @@ open class PhotoCollectionView: UIView {
     var photoViews: [PhotoView] = []
     
     weak open var dataSource: PhotoCollectionViewDataSource?
+    weak open var delegate: PhotoCollectionViewDelegate?
+    
     @IBInspectable open var moreTextColor: UIColor! = UIColor.white
     @IBInspectable open var moreTextBackgroundColor: UIColor! = UIColor(white: 0.2, alpha: 0.6)
     open var moreTextFont: UIFont! = UIFont.systemFont(ofSize: 17)
