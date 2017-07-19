@@ -95,6 +95,7 @@ open class PhotoCollectionView: UIView {
             }
 
             let photoView = PhotoView(frame: CGRect(origin: offset, size: itemSize))
+            photoView.tag = i
             if let image = image {
                 photoView.setImage(image)
             } else if let url = dataSource.photoCollectionView?(self, urlImageAt: i) {
@@ -103,8 +104,18 @@ open class PhotoCollectionView: UIView {
             if numImage > maxImage && i == numShow - 1 {
                 addMoreLabel(in: photoView, numMore: numImage - numShow)
             }
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapPhotoView(sender:)))
+            photoView.addGestureRecognizer(tapGesture)
             photoViews.append(photoView)
             addSubview(photoView)
+        }
+    }
+    
+    
+    func tapPhotoView(sender: UITapGestureRecognizer) {
+        if let tag = sender.view?.tag {
+            delegate?.photoCollectionView?(self, didSelectImageAt: tag)
         }
     }
     
