@@ -31,7 +31,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'PhotoCollectionView', '~> 1.2.0' 
+pod 'PhotoCollectionView', '~> 1.3.0' 
 ```
 
 Then, run the following command:
@@ -102,6 +102,21 @@ extension ViewController: PhotoCollectionViewDataSource {
 
 ```
 imageCollectionView.dataSource = self
+```
+
+### PhotoCollectionViewDelegate
+
+Handle which image selected
+```
+imageCollectionView.delegate = self
+```
+
+```
+extension ViewController: PhotoCollectionViewDelegate {
+    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didSelectImageAt index: Int) {
+        print("Press at index \(index)")
+    }
+}
 ```
 
 ## Author
