@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imageCollectionView.dataSource = self
+        imageCollectionView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,5 +32,11 @@ extension ViewController: PhotoCollectionViewDataSource {
     
     func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage? {
         return UIImage(named: "image\(index + 1)")
+    }
+}
+
+extension ViewController: PhotoCollectionViewDelegate {
+    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didSelectImageAt index: Int) {
+        print("Press at index \(index)")
     }
 }
