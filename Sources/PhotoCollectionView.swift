@@ -39,11 +39,20 @@ open class PhotoCollectionView: UIView {
         }
     }
     
-    open func reloadData() {
+    override open func removeFromSuperview() {
+        super.removeFromSuperview()
+        clear()
+    }
+    
+    func clear() {
         while photoViews.count > 0 {
             let view = photoViews.removeFirst()
             view.removeFromSuperview()
         }
+    }
+    
+    open func reloadData() {
+        clear()
         guard let dataSource = dataSource else {
             return
         }
