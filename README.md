@@ -106,7 +106,7 @@ imageCollectionView.dataSource = self
 
 ### PhotoCollectionViewDelegate
 
-Handle which image selected
+Handle image selection in PhotoCollectionView
 ```
 imageCollectionView.delegate = self
 ```
