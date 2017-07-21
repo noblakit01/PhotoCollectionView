@@ -26,6 +26,8 @@ open class PhotoCollectionView: UIView {
     var photoViews: [PhotoView] = []
     
     weak open var dataSource: PhotoCollectionViewDataSource?
+    weak open var delegate: PhotoCollectionViewDelegate?
+    
     @IBInspectable open var moreTextColor: UIColor! = UIColor.white
     @IBInspectable open var moreTextBackgroundColor: UIColor! = UIColor(white: 0.2, alpha: 0.6)
     open var moreTextFont: UIFont! = UIFont.systemFont(ofSize: 17)
@@ -93,6 +95,7 @@ open class PhotoCollectionView: UIView {
             }
 
             let photoView = PhotoView(frame: CGRect(origin: offset, size: itemSize))
+            photoView.tag = i
             if let image = image {
                 photoView.setImage(image)
             } else if let url = dataSource.photoCollectionView?(self, urlImageAt: i) {
@@ -101,8 +104,18 @@ open class PhotoCollectionView: UIView {
             if numImage > maxImage && i == numShow - 1 {
                 addMoreLabel(in: photoView, numMore: numImage - numShow)
             }
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapPhotoView(sender:)))
+            photoView.addGestureRecognizer(tapGesture)
             photoViews.append(photoView)
             addSubview(photoView)
+        }
+    }
+    
+    
+    func tapPhotoView(sender: UITapGestureRecognizer) {
+        if let tag = sender.view?.tag {
+            delegate?.photoCollectionView?(self, didSelectImageAt: tag)
         }
     }
     
