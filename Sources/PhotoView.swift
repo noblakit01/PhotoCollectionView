@@ -63,6 +63,7 @@ class PhotoView: UIView {
         imageView.image = image
     }
     
+    /*
     func setUrl(url: URL, photoCache: PhotoCache) {
         loadingView.startAnimating()
         photoCache.loadImage(atUrl: url, completion: { [weak self] image in
@@ -72,5 +73,5 @@ class PhotoView: UIView {
             sSelf.imageView.image = image
             sSelf.loadingView.stopAnimating()
         })
-    }
+    }*/
 }

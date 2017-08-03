@@ -31,7 +31,6 @@ open class PhotoCollectionView: UIView {
     @IBInspectable open var moreTextColor: UIColor! = UIColor.white
     @IBInspectable open var moreTextBackgroundColor: UIColor! = UIColor(white: 0.2, alpha: 0.6)
     open var moreTextFont: UIFont! = UIFont.systemFont(ofSize: 17)
-    open var photoCache = PhotoCache.default
     
     override open var bounds: CGRect {
         didSet {
@@ -108,7 +107,8 @@ open class PhotoCollectionView: UIView {
             if let image = image {
                 photoView.setImage(image)
             } else if let url = dataSource.photoCollectionView?(self, urlImageAt: i) {
-                photoView.setUrl(url: url, photoCache: photoCache)
+                // TODO: Get image from url here 
+                //photoView.setUrl(url: url, photoCache: photoCache)
             }
             if numImage > maxImage && i == numShow - 1 {
                 addMoreLabel(in: photoView, numMore: numImage - numShow)

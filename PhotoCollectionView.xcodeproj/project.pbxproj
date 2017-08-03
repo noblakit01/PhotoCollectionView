@@ -13,7 +13,6 @@
 		0F3BD74F1F1E5B880003A218 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F3BD74E1F1E5B880003A218 /* Assets.xcassets */; };
 		0F3BD7521F1E5B880003A218 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F3BD7501F1E5B880003A218 /* LaunchScreen.storyboard */; };
 		0F3BD7571F1E5B9D0003A218 /* PhotoCollectionView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* PhotoCollectionView.framework */; };
-		OBJ_21 /* PhotoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* PhotoCache.swift */; };
 		OBJ_22 /* PhotoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* PhotoCollectionView.swift */; };
 		OBJ_23 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* PhotoView.swift */; };
 /* End PBXBuildFile section */
@@ -30,7 +29,6 @@
 		OBJ_12 /* Example */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Example; sourceTree = SOURCE_ROOT; };
 		OBJ_15 /* PhotoCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PhotoCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_8 /* PhotoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCache.swift; sourceTree = "<group>"; };
 		OBJ_9 /* PhotoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,7 +80,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -92,13 +90,11 @@
 				0F3BD7461F1E5B880003A218 /* PhotoCollectionViewDemo */,
 				OBJ_14 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_8 /* PhotoCache.swift */,
 				OBJ_9 /* PhotoCollectionView.swift */,
 				OBJ_10 /* PhotoView.swift */,
 			);
@@ -164,7 +160,7 @@
 				en,
 				Base,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_14 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -202,7 +198,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_21 /* PhotoCache.swift in Sources */,
 				OBJ_22 /* PhotoCollectionView.swift in Sources */,
 				OBJ_23 /* PhotoView.swift in Sources */,
 			);
@@ -422,6 +417,7 @@
 				0F3BD7551F1E5B880003A218 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		OBJ_17 /* Build configuration list for PBXNativeTarget "PhotoCollectionView" */ = {
 			isa = XCConfigurationList;
