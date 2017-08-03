@@ -31,7 +31,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'PhotoCollectionView', '~> 1.3.0' 
+pod 'PhotoCollectionView', '~> 1.4.0' 
 ```
 
 Then, run the following command:
