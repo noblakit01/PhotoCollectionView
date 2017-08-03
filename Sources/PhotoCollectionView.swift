@@ -17,6 +17,7 @@ import UIKit
 
 @objc public protocol PhotoCollectionViewDelegate: NSObjectProtocol {
     @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didSelectImageAt index: Int)
+    @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didCreated photoView: PhotoView, at index: Int) -> Void
 }
 
 @IBDesignable
@@ -31,7 +32,6 @@ open class PhotoCollectionView: UIView {
     @IBInspectable open var moreTextColor: UIColor! = UIColor.white
     @IBInspectable open var moreTextBackgroundColor: UIColor! = UIColor(white: 0.2, alpha: 0.6)
     open var moreTextFont: UIFont! = UIFont.systemFont(ofSize: 17)
-    open var photoCache = PhotoCache.default
     
     override open var bounds: CGRect {
         didSet {
@@ -108,7 +108,7 @@ open class PhotoCollectionView: UIView {
             if let image = image {
                 photoView.setImage(image)
             } else if let url = dataSource.photoCollectionView?(self, urlImageAt: i) {
-                photoView.setUrl(url: url, photoCache: photoCache)
+                photoView.setUrl(url: url)
             }
             if numImage > maxImage && i == numShow - 1 {
                 addMoreLabel(in: photoView, numMore: numImage - numShow)
@@ -118,6 +118,8 @@ open class PhotoCollectionView: UIView {
             photoView.addGestureRecognizer(tapGesture)
             photoViews.append(photoView)
             addSubview(photoView)
+            
+            delegate?.photoCollectionView?(self, didCreated: photoView, at: i)
         }
     }
     

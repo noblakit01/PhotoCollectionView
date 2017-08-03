@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SwiftyImageCache
 
-class PhotoView: UIView {
+public class PhotoView: UIView {
     
-    lazy var imageView: UIImageView! = {
+    public lazy var imageView: UIImageView! = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
@@ -18,7 +19,7 @@ class PhotoView: UIView {
         imageView.backgroundColor = .black
         return imageView
     }()
-    lazy var loadingView: UIActivityIndicatorView! = {
+    public lazy var loadingView: UIActivityIndicatorView! = {
         let loadingView = UIActivityIndicatorView(activityIndicatorStyle: .white)
         loadingView.hidesWhenStopped = true
         loadingView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +34,7 @@ class PhotoView: UIView {
     }()
     
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -63,14 +64,17 @@ class PhotoView: UIView {
         imageView.image = image
     }
     
-    func setUrl(url: URL, photoCache: PhotoCache) {
+    func setUrl(url: URL, cache: ImageCache = ImageCache.default) {
         loadingView.startAnimating()
-        photoCache.loadImage(atUrl: url, completion: { [weak self] image in
+        let urlString = url.absoluteString
+        cache.loadImage(atUrl: url, completion: { [weak self] (urlStr, image) in
             guard let sSelf = self else {
                 return
             }
-            sSelf.imageView.image = image
-            sSelf.loadingView.stopAnimating()
+            if urlString == urlStr {
+                sSelf.imageView.image = image
+                sSelf.loadingView.stopAnimating()
+            }
         })
     }
 }
