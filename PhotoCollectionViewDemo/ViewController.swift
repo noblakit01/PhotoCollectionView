@@ -33,6 +33,11 @@ extension ViewController: PhotoCollectionViewDataSource {
     func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage? {
         return UIImage(named: "image\(index + 1)")
     }
+    
+    /* can use URL for data
+    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, urlImageAt index: Int) -> URL? {
+        return URL(string: "https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg")
+    }*/
 }
 
 extension ViewController: PhotoCollectionViewDelegate {
