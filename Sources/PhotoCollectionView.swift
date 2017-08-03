@@ -17,6 +17,7 @@ import UIKit
 
 @objc public protocol PhotoCollectionViewDelegate: NSObjectProtocol {
     @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didSelectImageAt index: Int)
+    @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didCreated photoView: PhotoView, at index: Int) -> Void
 }
 
 @IBDesignable
@@ -117,6 +118,8 @@ open class PhotoCollectionView: UIView {
             photoView.addGestureRecognizer(tapGesture)
             photoViews.append(photoView)
             addSubview(photoView)
+            
+            delegate?.photoCollectionView?(self, didCreated: photoView, at: i)
         }
     }
     

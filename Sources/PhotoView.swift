@@ -9,9 +9,9 @@
 import UIKit
 import SwiftyImageCache
 
-class PhotoView: UIView {
+public class PhotoView: UIView {
     
-    lazy var imageView: UIImageView! = {
+    public lazy var imageView: UIImageView! = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
@@ -19,7 +19,7 @@ class PhotoView: UIView {
         imageView.backgroundColor = .black
         return imageView
     }()
-    lazy var loadingView: UIActivityIndicatorView! = {
+    public lazy var loadingView: UIActivityIndicatorView! = {
         let loadingView = UIActivityIndicatorView(activityIndicatorStyle: .white)
         loadingView.hidesWhenStopped = true
         loadingView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +34,7 @@ class PhotoView: UIView {
     }()
     
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
