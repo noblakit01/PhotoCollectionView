@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyImageCache
 
 class PhotoView: UIView {
     
@@ -63,15 +64,17 @@ class PhotoView: UIView {
         imageView.image = image
     }
     
-    /*
-    func setUrl(url: URL, photoCache: PhotoCache) {
+    func setUrl(url: URL, cache: ImageCache = ImageCache.default) {
         loadingView.startAnimating()
-        photoCache.loadImage(atUrl: url, completion: { [weak self] image in
+        let urlString = url.absoluteString
+        cache.loadImage(atUrl: url, completion: { [weak self] (urlStr, image) in
             guard let sSelf = self else {
                 return
             }
-            sSelf.imageView.image = image
-            sSelf.loadingView.stopAnimating()
+            if urlString == urlStr {
+                sSelf.imageView.image = image
+                sSelf.loadingView.stopAnimating()
+            }
         })
-    }*/
+    }
 }

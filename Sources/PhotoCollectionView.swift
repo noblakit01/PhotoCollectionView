@@ -107,8 +107,7 @@ open class PhotoCollectionView: UIView {
             if let image = image {
                 photoView.setImage(image)
             } else if let url = dataSource.photoCollectionView?(self, urlImageAt: i) {
-                // TODO: Get image from url here 
-                //photoView.setUrl(url: url, photoCache: photoCache)
+                photoView.setUrl(url: url)
             }
             if numImage > maxImage && i == numShow - 1 {
                 addMoreLabel(in: photoView, numMore: numImage - numShow)
