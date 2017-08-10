@@ -1,12 +1,12 @@
 PODS:
-  - SwiftyImageCache (1.1)
+  - SwiftyImageCache (1.1.1)
 
 DEPENDENCIES:
-  - SwiftyImageCache (~> 1.1)
+  - SwiftyImageCache (~> 1.1.1)
 
 SPEC CHECKSUMS:
-  SwiftyImageCache: 358728f9d724930f4b8aaa608edc97d2a6b7021f
+  SwiftyImageCache: da2bf80e02ebb05ceb4276b3810fe2b833e5cd99
 
-PODFILE CHECKSUM: bb88847f91f67f1a1f81475861bed43625bd3890
+PODFILE CHECKSUM: 89d6218d868798e680c5d5846d2c727b141df11b
 
 COCOAPODS: 1.2.1
