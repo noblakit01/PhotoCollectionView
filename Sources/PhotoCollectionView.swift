@@ -140,21 +140,13 @@ open class PhotoCollectionView: UIView {
         label.text = "+\(numMore)"
         
         photoView.addSubview(label)
-        if #available(iOS 9.0, *) {
-            photoView.leftAnchor.constraint(equalTo: label.leftAnchor).isActive = true
-            photoView.rightAnchor.constraint(equalTo: label.rightAnchor).isActive = true
-            photoView.topAnchor.constraint(equalTo: label.topAnchor).isActive = true
-            photoView.bottomAnchor.constraint(equalTo: label.bottomAnchor).isActive = true
-
-        } else {
-            let constraints = [
-                NSLayoutConstraint(item: label, attribute: .left, relatedBy: .equal, toItem: photoView, attribute: .left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: photoView, attribute: .right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: photoView, attribute: .top, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: photoView, attribute: .bottom, multiplier: 1.0, constant: 0),
-                ]
-            photoView.addConstraints(constraints)
-        }
+        let constraints = [
+            NSLayoutConstraint(item: label, attribute: .left, relatedBy: .equal, toItem: photoView, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: photoView, attribute: .right, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: photoView, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: photoView, attribute: .bottom, multiplier: 1.0, constant: 0),
+            ]
+        photoView.addConstraints(constraints)
     }
 }
 
