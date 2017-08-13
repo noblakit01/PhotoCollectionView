@@ -83,20 +83,21 @@ open class PhotoCollectionView: UIView {
             } else {
                 let remainCount = CGFloat(numShow - 1)
                 if isVertical {
-                    itemSize.width = (size.width - margin) / 2
                     if i == 0 {
-                        itemSize.height = size.height
+                        itemSize = CGSize(width: (size.width - margin) * 0.6, height: size.height)
                         nextOffset.x += itemSize.width + margin
                     } else {
+                        itemSize = CGSize(width: (size.width - margin) * 0.4, height: size.height)
                         itemSize.height = (size.height - margin * (remainCount - 1)) / remainCount
                         nextOffset.y += itemSize.height + margin
                     }
                 } else {
-                    itemSize.height = (size.height - margin) / 2
                     if i == 0 {
+                        itemSize = CGSize(width: size.width, height: (size.height - margin) * 0.6)
                         itemSize.width = size.width
                         nextOffset.y += itemSize.height + margin
                     } else {
+                        itemSize = CGSize(width: size.width, height: (size.height - margin) * 0.4)
                         itemSize.width = (size.width - margin * (remainCount - 1)) / remainCount
                         nextOffset.x += itemSize.width + margin
                     }
