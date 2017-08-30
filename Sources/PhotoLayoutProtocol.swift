@@ -7,7 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol PhotoLayoutProtocol {
+    var maxPhoto: Int {get}
+    var spacing: CGFloat {get}
     
+    func frame(at index: Int, in photoCollectionView: PhotoCollectionView) -> CGRect
 }
