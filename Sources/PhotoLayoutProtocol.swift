@@ -15,3 +15,9 @@ protocol PhotoLayoutProtocol {
     
     func frame(at index: Int, in photoCollectionView: PhotoCollectionView) -> CGRect
 }
+
+extension PhotoLayoutProtocol {
+    var spacing: CGFloat {
+        return 2
+    }
+}
