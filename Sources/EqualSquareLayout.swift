@@ -27,4 +27,9 @@ class EqualSquareLayout: PhotoLayoutProtocol {
         
         return CGRect(origin: origin, size: size)
     }
+    
+    func contentSize(of photoCollectionView: PhotoCollectionView) -> CGSize {
+        let bounds = photoCollectionView.bounds
+        return CGSize(width: bounds.width, height: bounds.width)
+    }
 }
