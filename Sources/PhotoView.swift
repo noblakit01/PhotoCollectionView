@@ -57,10 +57,10 @@ public class PhotoView: UIView {
         imageView.image = image
     }
     
-    func setUrl(url: URL, cache: ImageCache = ImageCache.default) {
+    func setUrl(url: URL) {
         loadingView.startAnimating()
         let urlString = url.absoluteString
-        cache.loadImage(atUrl: url, completion: { [weak self] (urlStr, image) in
+        ImageCache.default.loadImage(atUrl: url, completion: { [weak self] (urlStr, image) in
             guard let sSelf = self else {
                 return
             }
