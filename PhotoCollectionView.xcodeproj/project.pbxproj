@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		09142C005C1E806898B8B37A /* Pods_PhotoCollectionView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A0A4A9CDFDB3F5E2E64CBF /* Pods_PhotoCollectionView.framework */; };
 		0F39467D1F55CAB600B366E9 /* PhotoLayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F39467C1F55CAB500B366E9 /* PhotoLayoutProtocol.swift */; };
+		0F3B39661F5AEB5A0039B989 /* DoubleLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3B39651F5AEB5A0039B989 /* DoubleLayout.swift */; };
 		0F3BD7481F1E5B880003A218 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BD7471F1E5B880003A218 /* AppDelegate.swift */; };
 		0F3BD74A1F1E5B880003A218 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BD7491F1E5B880003A218 /* ViewController.swift */; };
 		0F3BD74D1F1E5B880003A218 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F3BD74B1F1E5B880003A218 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		0F39467C1F55CAB500B366E9 /* PhotoLayoutProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLayoutProtocol.swift; sourceTree = "<group>"; };
+		0F3B39651F5AEB5A0039B989 /* DoubleLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleLayout.swift; sourceTree = "<group>"; };
 		0F3BD7451F1E5B870003A218 /* PhotoCollectionViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoCollectionViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F3BD7471F1E5B880003A218 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F3BD7491F1E5B880003A218 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				0F39467C1F55CAB500B366E9 /* PhotoLayoutProtocol.swift */,
 				0F4990DE1F5712B600B4F079 /* EqualSquareLayout.swift */,
 				0FA228261F5862E70027FDBD /* SingleLayout.swift */,
+				0F3B39651F5AEB5A0039B989 /* DoubleLayout.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -333,6 +336,7 @@
 				0F4990DF1F5712B600B4F079 /* EqualSquareLayout.swift in Sources */,
 				0FA228271F5862E70027FDBD /* SingleLayout.swift in Sources */,
 				OBJ_23 /* PhotoView.swift in Sources */,
+				0F3B39661F5AEB5A0039B989 /* DoubleLayout.swift in Sources */,
 				0F39467D1F55CAB600B366E9 /* PhotoLayoutProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
