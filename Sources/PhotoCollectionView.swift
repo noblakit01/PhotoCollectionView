@@ -25,7 +25,7 @@ open class PhotoCollectionView: UIView {
     var margin: CGFloat = 1
     var maxImage = 4
     var photoViews: [PhotoView] = []
-    var images: [UIImage] = []
+    var images: [UIImage?] = []
     
     weak open var dataSource: PhotoCollectionViewDataSource?
     weak open var delegate: PhotoCollectionViewDelegate?
@@ -71,8 +71,8 @@ open class PhotoCollectionView: UIView {
         
         for i in 0..<numShow {
             let image = dataSource.photoColletionView?(self, imageAt: i)
+            images.append(image)
             if let image = image {
-                images.append(image)
                 if i == 0 {
                     isVertical = image.size.width < image.size.height
                 }
@@ -127,6 +127,12 @@ open class PhotoCollectionView: UIView {
         }
     }
     
+    func image(at index: Int) -> UIImage? {
+        guard index >= 0 && index < images.count else {
+            return nil
+        }
+        return images[index]
+    }
     
     func tapPhotoView(sender: UITapGestureRecognizer) {
         if let tag = sender.view?.tag {
