@@ -20,6 +20,9 @@ class DoubleLayout: PhotoLayoutProtocol {
         guard index >= 0 && index < maxPhoto else {
             return CGRect.zero
         }
+        if index == 1 {
+            return CGRect(origin: CGPoint(x: spacing, y: spacing * 2 + itemSize.width), size: itemSize)
+        }
         
         contentSize = photoCollectionView.bounds.size
         guard let image = photoCollectionView.image(at: index) else {
