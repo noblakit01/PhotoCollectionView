@@ -10,6 +10,7 @@ import UIKit
 
 class DoubleLayout: PhotoLayoutProtocol {
     var contentSize: CGSize = CGSize.zero
+    var itemSize: CGSize = CGSize.zero
     
     var maxPhoto: Int {
         return 2
@@ -27,7 +28,8 @@ class DoubleLayout: PhotoLayoutProtocol {
         let width = (photoCollectionView.bounds.width - spacing * CGFloat(maxPhoto + 1)) / CGFloat(maxPhoto)
         var height = width * image.size.height / image.size.width
         height = min(height, width * 1.25)
-        contentSize = CGSize(width: width, height: height)
+        itemSize = CGSize(width: width, height: height)
+        contentSize = CGSize(width: photoCollectionView.bounds.width, height: height)
         return CGRect(origin: .zero, size: contentSize)
     }
     
