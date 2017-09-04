@@ -9,7 +9,6 @@
 import UIKit
 
 class DoubleLayout: PhotoLayoutProtocol {
-    var contentSize: CGSize = CGSize.zero
     var itemSize: CGSize = CGSize.zero
     var isVertical = false
     
@@ -45,7 +44,11 @@ class DoubleLayout: PhotoLayoutProtocol {
     }
     
     func contentSize(of photoCollectionView: PhotoCollectionView) -> CGSize {
-        return contentSize
+        if isVertical {
+            return CGSize(width: itemSize.width * 2 + spacing * 3, height: itemSize.height + spacing * 2)
+        } else {
+            return CGSize(width: itemSize.width + spacing * 2, height: itemSize.height * 2 + spacing * 3)
+        }
     }
 
 }
