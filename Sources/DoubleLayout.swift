@@ -11,6 +11,7 @@ import UIKit
 class DoubleLayout: PhotoLayoutProtocol {
     var contentSize: CGSize = CGSize.zero
     var itemSize: CGSize = CGSize.zero
+    var isVertical = false
     
     var maxPhoto: Int {
         return 2
@@ -20,20 +21,27 @@ class DoubleLayout: PhotoLayoutProtocol {
         guard index >= 0 && index < maxPhoto else {
             return CGRect.zero
         }
-        if index == 1 {
-            return CGRect(origin: CGPoint(x: spacing, y: spacing * 2 + itemSize.width), size: itemSize)
+        if index == 0 {
+            if let image = photoCollectionView.image(at: index) {
+                let ratio = image.size.height / image.size.width
+                isVertical = ratio > 1.0
+                if isVertical {
+                    let width = (photoCollectionView.bounds.width - spacing * 3) / 2
+                    itemSize = CGSize(width: width, height: width * min(ratio, 1.25))
+                } else {
+                    let width = photoCollectionView.bounds.width - spacing * 2
+                    itemSize = CGSize(width: width, height: width * min(ratio, 0.8))
+                }
+            } else {
+                isVertical = false
+                itemSize = CGSize(width: photoCollectionView.bounds.width - spacing * 2,
+                                  height: photoCollectionView.bounds.height - spacing * 3)
+            }
         }
         
-        contentSize = photoCollectionView.bounds.size
-        guard let image = photoCollectionView.image(at: index) else {
-            return CGRect(origin: .zero, size: contentSize)
-        }
-        let width = (photoCollectionView.bounds.width - spacing * CGFloat(maxPhoto + 1)) / CGFloat(maxPhoto)
-        var height = width * image.size.height / image.size.width
-        height = min(height, width * 1.25)
-        itemSize = CGSize(width: width, height: height)
-        contentSize = CGSize(width: photoCollectionView.bounds.width, height: height)
-        return CGRect(origin: .zero, size: contentSize)
+        let x = spacing + (spacing + itemSize.width) * CGFloat(isVertical ? index : 0)
+        let y = spacing + (spacing + itemSize.height) * CGFloat(isVertical ? 0 : index)
+        return CGRect(origin: CGPoint(x: x, y: y), size: itemSize)
     }
     
     func contentSize(of photoCollectionView: PhotoCollectionView) -> CGSize {
