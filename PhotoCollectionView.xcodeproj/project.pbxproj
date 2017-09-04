@@ -81,6 +81,16 @@
 			path = PhotoCollectionViewDemo;
 			sourceTree = "<group>";
 		};
+		0F4242451F5D9F2E001FDCC7 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				0F4990DE1F5712B600B4F079 /* EqualSquareLayout.swift */,
+				0FA228261F5862E70027FDBD /* SingleLayout.swift */,
+				0F3B39651F5AEB5A0039B989 /* DoubleLayout.swift */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
 		1EF6FCFAA49083CAFF391576 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,9 +146,7 @@
 				OBJ_9 /* PhotoCollectionView.swift */,
 				OBJ_10 /* PhotoView.swift */,
 				0F39467C1F55CAB500B366E9 /* PhotoLayoutProtocol.swift */,
-				0F4990DE1F5712B600B4F079 /* EqualSquareLayout.swift */,
-				0FA228261F5862E70027FDBD /* SingleLayout.swift */,
-				0F3B39651F5AEB5A0039B989 /* DoubleLayout.swift */,
+				0F4242451F5D9F2E001FDCC7 /* Layout */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
