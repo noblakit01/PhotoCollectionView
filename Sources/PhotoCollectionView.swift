@@ -26,6 +26,7 @@ open class PhotoCollectionView: UIView {
     var maxImage = 4
     var photoViews: [PhotoView] = []
     var images: [UIImage?] = []
+    var numImage = 0
     
     weak open var dataSource: PhotoCollectionViewDataSource?
     weak open var delegate: PhotoCollectionViewDelegate?
@@ -58,7 +59,7 @@ open class PhotoCollectionView: UIView {
         guard let dataSource = dataSource else {
             return
         }
-        let numImage = dataSource.numPhotos(in: self)
+        numImage = dataSource.numPhotos(in: self)
         guard numImage > 0 else {
             return
         }
