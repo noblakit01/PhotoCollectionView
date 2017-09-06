@@ -10,6 +10,7 @@ import UIKit
 
 class OneMainLayout: PhotoLayoutProtocol {
     var isVertical = false
+    var mainItemSize: CGSize = .zero
     var smallItemSize: CGSize = .zero
     var contentSize: CGSize = .zero
     
@@ -23,7 +24,7 @@ class OneMainLayout: PhotoLayoutProtocol {
             return CGRect.zero
         }
         if index == 0 {
-            var mainSize = CGSize(width: photoCollectionView.bounds.width - spacing * 2,
+            mainItemSize = CGSize(width: photoCollectionView.bounds.width - spacing * 2,
                                   height: photoCollectionView.bounds.height - spacing * 2)
             contentSize = photoCollectionView.bounds.size
             isVertical = false
@@ -31,23 +32,27 @@ class OneMainLayout: PhotoLayoutProtocol {
                 let ratio = image.size.height / image.size.width
                 isVertical = ratio >= 1.0
                 if isVertical {
-                    mainSize.width = (photoCollectionView.bounds.width - spacing * 3) * 0.6
-                    mainSize.height = mainSize.width * min(ratio, 1.25)
-                    contentSize.height = mainSize.height + spacing * 2
+                    mainItemSize.width = (photoCollectionView.bounds.width - spacing * 3) * 0.6
+                    mainItemSize.height = mainItemSize.width * min(ratio, 1.25)
+                    contentSize.height = mainItemSize.height + spacing * 2
                     
                     smallItemSize.width = (photoCollectionView.bounds.width - spacing * 3) * 0.4
-                    smallItemSize.height = (mainSize.height - CGFloat(numPhoto - 2) * spacing) / CGFloat(numPhoto - 1)
+                    smallItemSize.height = (mainItemSize.height - CGFloat(numPhoto - 2) * spacing) / CGFloat(numPhoto - 1)
                 } else {
-                    mainSize.height = mainSize.width * min(ratio, 0.8)
-                    contentSize.height = mainSize.height * 1.0 / 0.6 + spacing * 3
+                    mainItemSize.height = mainItemSize.width * min(ratio, 0.8)
+                    contentSize.height = mainItemSize.height * 1.0 / 0.6 + spacing * 3
                     
-                    smallItemSize.width = (mainSize.width - CGFloat(numPhoto - 2) * spacing) / CGFloat(numPhoto - 1)
-                    smallItemSize.height = mainSize.height * 0.4 / 0.6
+                    smallItemSize.width = (mainItemSize.width - CGFloat(numPhoto - 2) * spacing) / CGFloat(numPhoto - 1)
+                    smallItemSize.height = mainItemSize.height * 0.4 / 0.6
                 }
             }
-            return CGRect(origin: CGPoint(x: spacing, y: spacing), size: mainSize)
+            return CGRect(origin: CGPoint(x: spacing, y: spacing), size: mainItemSize)
         }
-        return photoCollectionView.bounds
+        let smallIndex = CGFloat(index) - 1
+        let x = isVertical ? mainItemSize.width + spacing * 2 : spacing + (smallItemSize.width + spacing) * smallIndex
+        let y = isVertical ? spacing + (smallItemSize.height + spacing) * smallIndex : mainItemSize.height + spacing * 2
+        
+        return CGRect(origin: CGPoint(x: x, y: y), size: mainItemSize)
     }
     
     func contentSize(of photoCollectionView: PhotoCollectionView) -> CGSize {
