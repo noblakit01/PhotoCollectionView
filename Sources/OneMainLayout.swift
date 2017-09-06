@@ -24,7 +24,8 @@ class OneMainLayout: PhotoLayoutProtocol {
         }
         if index == 0 {
             var mainSize = CGSize(width: photoCollectionView.bounds.width - spacing * 2,
-                                  height: photoCollectionView.bounds.height)
+                                  height: photoCollectionView.bounds.height - spacing * 2)
+            isVertical = false
             if let image = photoCollectionView.image(at: index) {
                 let ratio = image.size.height / image.size.width
                 isVertical = ratio >= 1.0
@@ -32,9 +33,10 @@ class OneMainLayout: PhotoLayoutProtocol {
                     mainSize.width = (photoCollectionView.bounds.width - spacing * 3) / 2
                     mainSize.height = mainSize.width * min(ratio, 1.25)
                 } else {
-                    mainSize.height = width * min(ratio, 0.8)
+                    mainSize.height = mainSize.width * min(ratio, 0.8)
                 }
             }
+            return CGRect(origin: CGPoint(x: spacing, y: spacing), size: mainSize)
         }
         return photoCollectionView.bounds
     }
