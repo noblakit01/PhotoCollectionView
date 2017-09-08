@@ -16,8 +16,9 @@ class TwoMainLayout: PhotoLayoutProtocol {
     var numMain = 2
     var numSmall = 3
     var isVertical = false
-    var mainItemSize = CGSize.zero
-    var smallItemSize = CGSize.zero
+    
+    var mainSize = CGSize.zero
+    var smallSize = CGSize.zero
     var contentSize = CGSize.zero
     
     
@@ -26,7 +27,7 @@ class TwoMainLayout: PhotoLayoutProtocol {
             return CGRect.zero
         }
         if index == 0 {
-            mainItemSize = CGSize(width: photoCollectionView.bounds.width - spacing * 2,
+            mainSize = CGSize(width: photoCollectionView.bounds.width - spacing * 2,
                                   height: photoCollectionView.bounds.height - spacing * 2)
             contentSize = photoCollectionView.bounds.size
             isVertical = false
@@ -34,26 +35,50 @@ class TwoMainLayout: PhotoLayoutProtocol {
                 let ratio = image.size.height / image.size.width
                 isVertical = ratio >= 1.0
                 if isVertical {
-                    mainItemSize.width = (contentSize.width - spacing * 3) * 0.6
-                    mainItemSize.height = mainItemSize.width * min(ratio, 1.25)
-                    contentSize.height = mainItemSize.height * 2 + spacing * 3
+                    mainSize.width = (contentSize.width - spacing * 3) * 0.6
+                    mainSize.height = mainSize.width * min(ratio, 1.25)
+                    contentSize.height = mainSize.height * 2 + spacing * 3
                     
-                    smallItemSize.width = (contentSize.width - spacing * 3) * 0.4
-                    smallItemSize.height = (contentSize.height - CGFloat(numSmall + 1) * spacing) / CGFloat(numSmall)
+                    smallSize.width = (contentSize.width - spacing * 3) * 0.4
+                    smallSize.height = (contentSize.height - CGFloat(numSmall + 1) * spacing) / CGFloat(numSmall)
                 } else {
-                    mainItemSize.height = mainItemSize.width * min(ratio, 0.8)
-                    contentSize.height = mainItemSize.height * 1.0 / 0.6 + spacing * 3
+                    mainSize.height = mainSize.width * min(ratio, 0.8)
+                    contentSize.height = mainSize.height * 1.0 / 0.6 + spacing * 3
                     
-                    smallItemSize.width = (contentSize.width - CGFloat(numSmall + 1) * spacing) / CGFloat(numSmall)
-                    smallItemSize.height = mainItemSize.height * 0.4 / 0.6
+                    smallSize.width = (contentSize.width - CGFloat(numSmall + 1) * spacing) / CGFloat(numSmall)
+                    smallSize.height = mainSize.height * 0.4 / 0.6
                 }
             }
         }
-        let smallIndex = CGFloat(index) - 1
-        let x = isVertical ? mainItemSize.width + spacing * 2 : spacing + (smallItemSize.width + spacing) * smallIndex
-        let y = isVertical ? spacing + (smallItemSize.height + spacing) * smallIndex : mainItemSize.height + spacing * 2
         
-        return CGRect(origin: CGPoint(x: x, y: y), size: mainItemSize)
+        let origin: CGPoint
+        let size: CGSize
+        if index < numMain {
+            origin = {
+                if isVertical {
+                    return CGPoint(x: spacing,
+                                   y: spacing + (mainSize.height + spacing) * CGFloat(index))
+                } else {
+                    return CGPoint(x: spacing + (mainSize.width + spacing) * CGFloat(index),
+                                   y: spacing)
+                }
+            }()
+            size = mainSize
+        } else {
+            let smallIndex = CGFloat(index - numMain)
+            origin = {
+                if isVertical {
+                    return CGPoint(x: spacing * 2 + mainSize.width,
+                                   y: spacing + (smallSize.height + spacing) * smallIndex)
+                } else {
+                    return CGPoint(x: spacing + (smallSize.width + spacing) * smallIndex,
+                                   y: spacing * 2 + mainSize.height)
+                }
+            }()
+            size = smallSize
+        }
+        
+        return CGRect(origin: origin, size: size)
     }
     
     
