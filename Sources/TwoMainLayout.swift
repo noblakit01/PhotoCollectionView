@@ -13,7 +13,8 @@ class TwoMainLayout: PhotoLayoutProtocol {
     var maxPhoto: Int {
         return 5
     }
-    var numMainPhoto = 2
+    var numMain = 2
+    var numSmall = 3
     var isVertical = false
     var mainItemSize = CGSize.zero
     var smallItemSize = CGSize.zero
@@ -33,21 +34,20 @@ class TwoMainLayout: PhotoLayoutProtocol {
                 let ratio = image.size.height / image.size.width
                 isVertical = ratio >= 1.0
                 if isVertical {
-                    mainItemSize.width = (photoCollectionView.bounds.width - spacing * 3) * 0.6
+                    mainItemSize.width = (contentSize.width - spacing * 3) * 0.6
                     mainItemSize.height = mainItemSize.width * min(ratio, 1.25)
                     contentSize.height = mainItemSize.height * 2 + spacing * 3
                     
-                    smallItemSize.width = (photoCollectionView.bounds.width - spacing * 3) * 0.4
-                    smallItemSize.height = (mainItemSize.height - CGFloat(maxPhoto - 2) * spacing) / CGFloat(maxPhoto - 1)
+                    smallItemSize.width = (contentSize.width - spacing * 3) * 0.4
+                    smallItemSize.height = (contentSize.height - CGFloat(numSmall + 1) * spacing) / CGFloat(numSmall)
                 } else {
                     mainItemSize.height = mainItemSize.width * min(ratio, 0.8)
                     contentSize.height = mainItemSize.height * 1.0 / 0.6 + spacing * 3
                     
-                    smallItemSize.width = (mainItemSize.width - CGFloat(maxPhoto - 2) * spacing) / CGFloat(maxPhoto - 1)
+                    smallItemSize.width = (contentSize.width - CGFloat(numSmall + 1) * spacing) / CGFloat(numSmall)
                     smallItemSize.height = mainItemSize.height * 0.4 / 0.6
                 }
             }
-            return CGRect(origin: CGPoint(x: spacing, y: spacing), size: mainItemSize)
         }
         let smallIndex = CGFloat(index) - 1
         let x = isVertical ? mainItemSize.width + spacing * 2 : spacing + (smallItemSize.width + spacing) * smallIndex
