@@ -21,32 +21,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L58-bc-9pZ" customClass="PhotoCollectionView" customModule="PhotoCollectionView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="280"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1dJ-xe-Cmo">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="280" id="HFv-L4-JPE"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="moreTextBackgroundColor">
-                                        <color key="value" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="moreTextColor">
-                                        <color key="value" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="vFv-JW-Jae">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vFv-JW-Jae" id="hg9-eZ-inQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2BR-53-M2b">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2BR-53-M2b" firstAttribute="top" secondItem="hg9-eZ-inQ" secondAttribute="top" id="DxH-aL-TUy"/>
+                                                <constraint firstItem="2BR-53-M2b" firstAttribute="leading" secondItem="hg9-eZ-inQ" secondAttribute="leading" id="VCi-Ff-krb"/>
+                                                <constraint firstAttribute="trailing" secondItem="2BR-53-M2b" secondAttribute="trailing" id="gcH-62-gzT"/>
+                                                <constraint firstAttribute="bottom" secondItem="2BR-53-M2b" secondAttribute="bottom" id="syY-1s-hBy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="L58-bc-9pZ" secondAttribute="trailing" id="Aqu-jW-pO2"/>
-                            <constraint firstItem="L58-bc-9pZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="C0i-fK-bNZ"/>
-                            <constraint firstItem="L58-bc-9pZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Wqx-Qy-Ukh"/>
+                            <constraint firstAttribute="trailing" secondItem="1dJ-xe-Cmo" secondAttribute="trailing" id="U7S-a5-Mxn"/>
+                            <constraint firstItem="1dJ-xe-Cmo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="emu-Pj-X4M"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1dJ-xe-Cmo" secondAttribute="bottom" id="gy1-F7-3gr"/>
+                            <constraint firstItem="1dJ-xe-Cmo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="scL-gJ-y70"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="imageCollectionView" destination="L58-bc-9pZ" id="HJv-l6-QzM"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
