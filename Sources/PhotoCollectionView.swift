@@ -35,6 +35,8 @@ open class PhotoCollectionView: UIView {
     @IBInspectable open var moreTextBackgroundColor: UIColor! = UIColor(white: 0.2, alpha: 0.6)
     open var moreTextFont: UIFont! = UIFont.systemFont(ofSize: 17)
     
+    var layout: PhotoLayoutProtocol!
+    
     override open var bounds: CGRect {
         didSet {
             reloadData()
