@@ -56,6 +56,22 @@ open class PhotoCollectionView: UIView {
         images.removeAll()
     }
     
+    func layoutFor(numImage: Int) -> PhotoLayoutProtocol {
+        if numImage == 1 {
+            return SingleLayout()
+        } else if numImage == 2 {
+            return DoubleLayout()
+        } else if numImage < 11 {
+            if numImage % 4 == 0 {
+                return EqualSquareLayout()
+            } else {
+                return OneMainLayout()
+            }
+        } else {
+            return TwoMainLayout()
+        }
+    }
+    
     open func reloadData() {
         clear()
         guard let dataSource = dataSource else {
@@ -65,7 +81,7 @@ open class PhotoCollectionView: UIView {
         guard numImage > 0 else {
             return
         }
-        
+        layout = layoutFor(numImage: numImage)
         let numShow = min(maxImage, numImage)
         
         let size = bounds.size
