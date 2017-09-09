@@ -30,7 +30,7 @@ extension ViewController: PhotoCollectionViewDataSource {
         return 10
     }
     
-    func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage? {
+    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage? {
         return UIImage(named: "image\(index + 1)")
     }
     

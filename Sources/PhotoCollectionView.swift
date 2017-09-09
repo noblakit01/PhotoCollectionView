@@ -11,7 +11,7 @@ import UIKit
 @objc public protocol PhotoCollectionViewDataSource: NSObjectProtocol {
     func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int
     
-    @objc optional func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage?
+    @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage?
     @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, urlImageAt index: Int) -> URL?
 }
 
@@ -82,7 +82,7 @@ open class PhotoCollectionView: UIView {
         layout = layoutFor(numImage: numImage)
         let numShow = min(layout.maxPhoto, numImage)
         for i in 0..<numShow {
-            let image = dataSource.photoColletionView?(self, imageAt: i)
+            let image = dataSource.photoCollectionView?(self, imageAt: i)
             let frame = layout.frame(at: i, in: self)
             let photoView = PhotoView(frame: frame)
             photoView.tag = i
