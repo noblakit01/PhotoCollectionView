@@ -22,8 +22,6 @@ import UIKit
 
 @IBDesignable
 open class PhotoCollectionView: UIView {
-    var margin: CGFloat = 1
-    var maxImage = 4
     var photoViews: [PhotoView] = []
     var images: [UIImage?] = []
     var numImage = 0
@@ -94,7 +92,7 @@ open class PhotoCollectionView: UIView {
             } else if let url = dataSource.photoCollectionView?(self, urlImageAt: i) {
                 photoView.setUrl(url: url)
             }
-            if numImage > maxImage && i == numShow - 1 {
+            if numImage > layout.maxPhoto && i == numShow - 1 {
                 addMoreLabel(in: photoView, numMore: numImage - numShow)
             }
             
