@@ -82,52 +82,13 @@ open class PhotoCollectionView: UIView {
             return
         }
         layout = layoutFor(numImage: numImage)
-        let numShow = min(maxImage, numImage)
-        
-        let size = bounds.size
-        var isVertical = false
-        var nextOffset = CGPoint.zero
-        
+        let numShow = min(layout.maxPhoto, numImage)
         for i in 0..<numShow {
             let image = dataSource.photoColletionView?(self, imageAt: i)
-            images.append(image)
-            if let image = image {
-                if i == 0 {
-                    isVertical = image.size.width < image.size.height
-                }
-            }
-            var itemSize = CGSize.zero
-            let offset = nextOffset
-            
-            if numShow == 1 {
-                itemSize.width = size.width
-                itemSize.height = size.height
-            } else {
-                let remainCount = CGFloat(numShow - 1)
-                if isVertical {
-                    if i == 0 {
-                        itemSize = CGSize(width: (size.width - margin) * 0.6, height: size.height)
-                        nextOffset.x += itemSize.width + margin
-                    } else {
-                        itemSize = CGSize(width: (size.width - margin) * 0.4, height: size.height)
-                        itemSize.height = (size.height - margin * (remainCount - 1)) / remainCount
-                        nextOffset.y += itemSize.height + margin
-                    }
-                } else {
-                    if i == 0 {
-                        itemSize = CGSize(width: size.width, height: (size.height - margin) * 0.6)
-                        itemSize.width = size.width
-                        nextOffset.y += itemSize.height + margin
-                    } else {
-                        itemSize = CGSize(width: size.width, height: (size.height - margin) * 0.4)
-                        itemSize.width = (size.width - margin * (remainCount - 1)) / remainCount
-                        nextOffset.x += itemSize.width + margin
-                    }
-                }
-            }
-
-            let photoView = PhotoView(frame: CGRect(origin: offset, size: itemSize))
+            let frame = layout.frame(at: i, in: self)
+            let photoView = PhotoView(frame: frame)
             photoView.tag = i
+            
             if let image = image {
                 photoView.setImage(image)
             } else if let url = dataSource.photoCollectionView?(self, urlImageAt: i) {
