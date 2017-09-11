@@ -11,37 +11,27 @@ import PhotoCollectionView
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var imageCollectionView: PhotoCollectionView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var images : [[UIImage]] = [[]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageCollectionView.dataSource = self
-        imageCollectionView.delegate = self
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 }
 
-extension ViewController: PhotoCollectionViewDataSource {
-    func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int {
-        return 10
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return images.count
     }
     
-    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage? {
-        return UIImage(named: "image\(index + 1)")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+        cell.images = images[indexPath.row]
+        return cell
     }
-    
-    /* can use URL for data
-    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, urlImageAt index: Int) -> URL? {
-        return URL(string: "https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg")
-    }*/
 }
 
-extension ViewController: PhotoCollectionViewDelegate {
-    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didSelectImageAt index: Int) {
-        print("Press at index \(index)")
-    }
-}
