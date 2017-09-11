@@ -41,6 +41,10 @@ open class PhotoCollectionView: UIView {
         }
     }
     
+    override open var intrinsicContentSize: CGSize {
+        return layout.contentSize(of: self)
+    }
+    
     override open func removeFromSuperview() {
         super.removeFromSuperview()
         clear()
@@ -103,6 +107,7 @@ open class PhotoCollectionView: UIView {
             
             delegate?.photoCollectionView?(self, didCreated: photoView, at: i)
         }
+        invalidateIntrinsicContentSize()
     }
     
     func image(at index: Int) -> UIImage? {
