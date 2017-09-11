@@ -13,13 +13,22 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var images : [[UIImage]] = [[]]
+    var images : [[UIImage]] = [
+        [#imageLiteral(resourceName: "image1")],
+        [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2")],
+        [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3")],
+        [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3"), #imageLiteral(resourceName: "image4")],
+        [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3"), #imageLiteral(resourceName: "image4"), #imageLiteral(resourceName: "image5")],
+        [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3"), #imageLiteral(resourceName: "image4"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5")],
+        [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3"), #imageLiteral(resourceName: "image4"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5")],
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.tableFooterView = nil
     }
 }
 
