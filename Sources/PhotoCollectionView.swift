@@ -87,6 +87,7 @@ open class PhotoCollectionView: UIView {
         let numShow = min(layout.maxPhoto, numImage)
         for i in 0..<numShow {
             let image = dataSource.photoCollectionView?(self, imageAt: i)
+            images.append(image)
             let frame = layout.frame(at: i, in: self)
             let photoView = PhotoView(frame: frame)
             photoView.tag = i
