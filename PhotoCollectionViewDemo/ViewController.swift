@@ -19,9 +19,13 @@ class ViewController: UIViewController {
         [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3")],
         [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3"), #imageLiteral(resourceName: "image4")],
         [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3"), #imageLiteral(resourceName: "image4"), #imageLiteral(resourceName: "image5")],
-        [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3"), #imageLiteral(resourceName: "image4"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5")],
-        [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3"), #imageLiteral(resourceName: "image4"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5")],
         [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3"), #imageLiteral(resourceName: "image4"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image5")],
+        [#imageLiteral(resourceName: "dog-1")],
+        [#imageLiteral(resourceName: "dog-1"), #imageLiteral(resourceName: "dog-2")],
+        [#imageLiteral(resourceName: "dog-1"), #imageLiteral(resourceName: "dog-2"), #imageLiteral(resourceName: "dog-3")],
+        [#imageLiteral(resourceName: "dog-1"), #imageLiteral(resourceName: "dog-2"), #imageLiteral(resourceName: "dog-3"), #imageLiteral(resourceName: "dog-4")],
+        [#imageLiteral(resourceName: "dog-1"), #imageLiteral(resourceName: "dog-2"), #imageLiteral(resourceName: "dog-3"), #imageLiteral(resourceName: "dog-4"), #imageLiteral(resourceName: "dog-5")],
+        [#imageLiteral(resourceName: "dog-1"), #imageLiteral(resourceName: "dog-2"), #imageLiteral(resourceName: "dog-3"), #imageLiteral(resourceName: "dog-4"), #imageLiteral(resourceName: "dog-5"), #imageLiteral(resourceName: "dog-5"), #imageLiteral(resourceName: "dog-5"), #imageLiteral(resourceName: "dog-5"), #imageLiteral(resourceName: "dog-5"), #imageLiteral(resourceName: "dog-5"), #imageLiteral(resourceName: "dog-5"), #imageLiteral(resourceName: "dog-5"), #imageLiteral(resourceName: "dog-5"), #imageLiteral(resourceName: "dog-5")],
     ]
     
     override func viewDidLoad() {
