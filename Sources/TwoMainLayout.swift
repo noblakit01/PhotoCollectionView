@@ -35,9 +35,11 @@ class TwoMainLayout: PhotoLayoutProtocol {
             return CGRect.zero
         }
         if index == 0 {
-            mainSize = CGSize(width: photoCollectionView.bounds.width - spacing * 2,
-                                  height: photoCollectionView.bounds.height - spacing * 2)
             contentSize = photoCollectionView.bounds.size
+            mainSize = CGSize(width: (contentSize.width - spacing * 3) / CGFloat(numMain),
+                                  height: (contentSize.height - spacing * 3) * mainPercent)
+            smallSize = CGSize(width: (contentSize.width - spacing * CGFloat(numSmall + 1)) / CGFloat(numSmall),
+                               height: (contentSize.height - spacing * 3) * smallPercent)
             isVertical = false
             if let image = photoCollectionView.image(at: index) {
                 let ratio = image.size.height / image.size.width
@@ -50,10 +52,9 @@ class TwoMainLayout: PhotoLayoutProtocol {
                     smallSize.width = (contentSize.width - spacing * 3) * smallPercent
                     smallSize.height = (contentSize.height - CGFloat(numSmall + 1) * spacing) / CGFloat(numSmall)
                 } else {
-                    mainSize.height = mainSize.width * min(ratio, 0.8)
+                    mainSize.height = mainSize.width * max(ratio, 0.9)
                     contentSize.height = mainSize.height * 1.0 / mainPercent + spacing * 3
                     
-                    smallSize.width = (contentSize.width - CGFloat(numSmall + 1) * spacing) / CGFloat(numSmall)
                     smallSize.height = mainSize.height * smallPercent / mainPercent
                 }
             }
