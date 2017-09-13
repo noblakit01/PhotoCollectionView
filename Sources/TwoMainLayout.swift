@@ -21,6 +21,14 @@ class TwoMainLayout: PhotoLayoutProtocol {
     var smallSize = CGSize.zero
     var contentSize = CGSize.zero
     
+    var mainPercent: CGFloat {
+        return 0.6
+    }
+    
+    var smallPercent: CGFloat {
+        return 1.0 - mainPercent
+    }
+    
     
     func frame(at index: Int, in photoCollectionView: PhotoCollectionView) -> CGRect {
         guard index >= 0 && index < maxPhoto else {
@@ -35,18 +43,18 @@ class TwoMainLayout: PhotoLayoutProtocol {
                 let ratio = image.size.height / image.size.width
                 isVertical = ratio >= 1.0
                 if isVertical {
-                    mainSize.width = (contentSize.width - spacing * 3) * 0.6
-                    mainSize.height = mainSize.width * min(ratio, 1.25)
+                    mainSize.width = (contentSize.width - spacing * 3) * mainPercent
+                    mainSize.height = mainSize.width * min(ratio, 1.12)
                     contentSize.height = mainSize.height * 2 + spacing * 3
                     
-                    smallSize.width = (contentSize.width - spacing * 3) * 0.4
+                    smallSize.width = (contentSize.width - spacing * 3) * smallPercent
                     smallSize.height = (contentSize.height - CGFloat(numSmall + 1) * spacing) / CGFloat(numSmall)
                 } else {
                     mainSize.height = mainSize.width * min(ratio, 0.8)
-                    contentSize.height = mainSize.height * 1.0 / 0.6 + spacing * 3
+                    contentSize.height = mainSize.height * 1.0 / mainPercent + spacing * 3
                     
                     smallSize.width = (contentSize.width - CGFloat(numSmall + 1) * spacing) / CGFloat(numSmall)
-                    smallSize.height = mainSize.height * 0.4 / 0.6
+                    smallSize.height = mainSize.height * smallPercent / mainPercent
                 }
             }
         }
