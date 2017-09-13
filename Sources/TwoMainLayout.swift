@@ -81,6 +81,8 @@ class TwoMainLayout: PhotoLayoutProtocol {
         return CGRect(origin: origin, size: size)
     }
     
-    
+    func contentSize(of photoCollectionView: PhotoCollectionView) -> CGSize {
+        return contentSize
+    }
     
 }
