@@ -11,7 +11,7 @@ import UIKit
 @objc public protocol PhotoCollectionViewDataSource: NSObjectProtocol {
     func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int
     
-    @objc optional func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage?
+    @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage?
     @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, urlImageAt index: Int) -> URL?
 }
 
@@ -22,8 +22,6 @@ import UIKit
 
 @IBDesignable
 open class PhotoCollectionView: UIView {
-    var margin: CGFloat = 1
-    var maxImage = 4
     var photoViews: [PhotoView] = []
     var images: [UIImage?] = []
     var numImage = 0
@@ -35,10 +33,16 @@ open class PhotoCollectionView: UIView {
     @IBInspectable open var moreTextBackgroundColor: UIColor! = UIColor(white: 0.2, alpha: 0.6)
     open var moreTextFont: UIFont! = UIFont.systemFont(ofSize: 17)
     
+    var layout: PhotoLayoutProtocol!
+    
     override open var bounds: CGRect {
         didSet {
             reloadData()
         }
+    }
+    
+    override open var intrinsicContentSize: CGSize {
+        return layout.contentSize(of: self)
     }
     
     override open func removeFromSuperview() {
@@ -54,6 +58,22 @@ open class PhotoCollectionView: UIView {
         images.removeAll()
     }
     
+    func layoutFor(numImage: Int) -> PhotoLayoutProtocol {
+        if numImage == 1 {
+            return SingleLayout()
+        } else if numImage == 2 {
+            return DoubleLayout()
+        } else if numImage < 11 {
+            if numImage % 4 == 0 {
+                return EqualSquareLayout()
+            } else {
+                return OneMainLayout()
+            }
+        } else {
+            return TwoMainLayout()
+        }
+    }
+    
     open func reloadData() {
         clear()
         guard let dataSource = dataSource else {
@@ -63,59 +83,21 @@ open class PhotoCollectionView: UIView {
         guard numImage > 0 else {
             return
         }
-        
-        let numShow = min(maxImage, numImage)
-        
-        let size = bounds.size
-        var isVertical = false
-        var nextOffset = CGPoint.zero
-        
+        layout = layoutFor(numImage: numImage)
+        let numShow = min(layout.maxPhoto, numImage)
         for i in 0..<numShow {
-            let image = dataSource.photoColletionView?(self, imageAt: i)
+            let image = dataSource.photoCollectionView?(self, imageAt: i)
             images.append(image)
-            if let image = image {
-                if i == 0 {
-                    isVertical = image.size.width < image.size.height
-                }
-            }
-            var itemSize = CGSize.zero
-            let offset = nextOffset
-            
-            if numShow == 1 {
-                itemSize.width = size.width
-                itemSize.height = size.height
-            } else {
-                let remainCount = CGFloat(numShow - 1)
-                if isVertical {
-                    if i == 0 {
-                        itemSize = CGSize(width: (size.width - margin) * 0.6, height: size.height)
-                        nextOffset.x += itemSize.width + margin
-                    } else {
-                        itemSize = CGSize(width: (size.width - margin) * 0.4, height: size.height)
-                        itemSize.height = (size.height - margin * (remainCount - 1)) / remainCount
-                        nextOffset.y += itemSize.height + margin
-                    }
-                } else {
-                    if i == 0 {
-                        itemSize = CGSize(width: size.width, height: (size.height - margin) * 0.6)
-                        itemSize.width = size.width
-                        nextOffset.y += itemSize.height + margin
-                    } else {
-                        itemSize = CGSize(width: size.width, height: (size.height - margin) * 0.4)
-                        itemSize.width = (size.width - margin * (remainCount - 1)) / remainCount
-                        nextOffset.x += itemSize.width + margin
-                    }
-                }
-            }
-
-            let photoView = PhotoView(frame: CGRect(origin: offset, size: itemSize))
+            let frame = layout.frame(at: i, in: self)
+            let photoView = PhotoView(frame: frame)
             photoView.tag = i
+            
             if let image = image {
                 photoView.setImage(image)
             } else if let url = dataSource.photoCollectionView?(self, urlImageAt: i) {
                 photoView.setUrl(url: url)
             }
-            if numImage > maxImage && i == numShow - 1 {
+            if numImage > layout.maxPhoto && i == numShow - 1 {
                 addMoreLabel(in: photoView, numMore: numImage - numShow)
             }
             
@@ -126,6 +108,7 @@ open class PhotoCollectionView: UIView {
             
             delegate?.photoCollectionView?(self, didCreated: photoView, at: i)
         }
+        invalidateIntrinsicContentSize()
     }
     
     func image(at index: Int) -> UIImage? {
