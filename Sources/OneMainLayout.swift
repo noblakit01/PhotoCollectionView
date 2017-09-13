@@ -52,7 +52,7 @@ class OneMainLayout: PhotoLayoutProtocol {
         let x = isVertical ? mainItemSize.width + spacing * 2 : spacing + (smallItemSize.width + spacing) * smallIndex
         let y = isVertical ? spacing + (smallItemSize.height + spacing) * smallIndex : mainItemSize.height + spacing * 2
         
-        return CGRect(origin: CGPoint(x: x, y: y), size: mainItemSize)
+        return CGRect(origin: CGPoint(x: x, y: y), size: smallItemSize)
     }
     
     func contentSize(of photoCollectionView: PhotoCollectionView) -> CGSize {
