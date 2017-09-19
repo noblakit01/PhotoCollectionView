@@ -57,7 +57,7 @@ public class PhotoView: UIView {
         imageView.image = image
     }
     
-    func setUrl(url: URL) {
+    func setUrl(url: URL, completion: (() -> Void)? = nil) {
         loadingView.startAnimating()
         let urlString = url.absoluteString
         ImageCache.default.loadImage(atUrl: url, completion: { [weak self] (urlStr, image) in
@@ -67,6 +67,7 @@ public class PhotoView: UIView {
             if urlString == urlStr {
                 sSelf.imageView.image = image
                 sSelf.loadingView.stopAnimating()
+                completion?()
             }
         })
     }
