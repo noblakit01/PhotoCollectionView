@@ -95,10 +95,16 @@ open class PhotoCollectionView: UIView {
             if let image = image {
                 photoView.setImage(image)
             } else if let url = dataSource.photoCollectionView?(self, urlImageAt: i) {
-                photoView.setUrl(url: url, completion: {
-                    [weak self] in
-                    self?.reloadFrame(at: i)
-                })
+                let absoluteString = url.absoluteString
+                photoView.setUrl(url: url) { [weak self] (urlStr, image) in
+                    guard let sSelf = self else {
+                        return
+                    }
+                    if absoluteString == urlStr, let image = image {
+                        sSelf.images[i] = image
+                        sSelf.reloadFrame(at: i)
+                    }
+                }
             }
             if numImage > layout.maxPhoto && i == numShow - 1 {
                 addMoreLabel(in: photoView, numMore: numImage - numShow)
