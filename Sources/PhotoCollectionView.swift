@@ -102,7 +102,9 @@ open class PhotoCollectionView: UIView {
                     }
                     if absoluteString == urlStr, let image = image {
                         sSelf.images[i] = image
-                        sSelf.reloadFrame(at: i)
+                        if i == 0 {
+                            sSelf.reloadFrame()
+                        }
                     }
                 }
             }
@@ -116,6 +118,13 @@ open class PhotoCollectionView: UIView {
             addSubview(photoView)
             
             delegate?.photoCollectionView?(self, didCreated: photoView, at: i)
+        }
+        invalidateIntrinsicContentSize()
+    }
+    
+    func reloadFrame() {
+        for (index, photoView) in photoViews.enumerated() {
+            photoView.frame = layout.frame(at: index, in: self)
         }
         invalidateIntrinsicContentSize()
     }
