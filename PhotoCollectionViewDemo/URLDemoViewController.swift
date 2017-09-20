@@ -22,7 +22,7 @@ class URLDemoViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var images : [[String]] = [
+    var urls : [[String]] = [
         [UrlDemo.cat1.rawValue],
         [UrlDemo.cat1.rawValue, UrlDemo.cat2.rawValue],
         [UrlDemo.cat1.rawValue, UrlDemo.cat2.rawValue, UrlDemo.cat3.rawValue],
@@ -41,11 +41,12 @@ class URLDemoViewController: UIViewController {
 
 extension URLDemoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return images.count
+        return urls.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! URLTableViewCell
+        cell.urls = urls[indexPath.row]
         return cell
     }
 }

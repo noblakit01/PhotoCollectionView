@@ -42,7 +42,7 @@ open class PhotoCollectionView: UIView {
     }
     
     override open var intrinsicContentSize: CGSize {
-        return layout.contentSize(of: self)
+        return layout != nil ? layout.contentSize(of: self) : bounds.size
     }
     
     override open func removeFromSuperview() {
