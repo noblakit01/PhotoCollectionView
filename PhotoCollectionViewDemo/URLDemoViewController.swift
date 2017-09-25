@@ -47,6 +47,14 @@ extension URLDemoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! URLTableViewCell
         cell.urls = urls[indexPath.row]
+        cell.photoCollectionView.delegate = self
         return cell
+    }
+}
+
+extension URLDemoViewController: PhotoCollectionViewDelegate {
+    func didChangeSize(of photoCollectionView: PhotoCollectionView) {
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
 }
