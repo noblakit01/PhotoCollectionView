@@ -18,6 +18,7 @@ import UIKit
 @objc public protocol PhotoCollectionViewDelegate: NSObjectProtocol {
     @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didSelectImageAt index: Int)
     @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didCreated photoView: PhotoView, at index: Int) -> Void
+    @objc optional func didChangeSize(of photoCollectionView: PhotoCollectionView)
 }
 
 @IBDesignable
@@ -127,6 +128,7 @@ open class PhotoCollectionView: UIView {
             photoView.frame = layout.frame(at: index, in: self)
         }
         invalidateIntrinsicContentSize()
+        delegate?.didChangeSize?(of: self)
     }
     
     func reloadFrame(at index: Int, animated: Bool = true) {
