@@ -20,7 +20,6 @@ import UIKit
     @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didCreated photoView: PhotoView, at index: Int) -> Void
 }
 
-@IBDesignable
 open class PhotoCollectionView: UIView {
     var photoViews: [PhotoView] = []
     var images: [UIImage?] = []
@@ -29,8 +28,8 @@ open class PhotoCollectionView: UIView {
     weak open var dataSource: PhotoCollectionViewDataSource?
     weak open var delegate: PhotoCollectionViewDelegate?
     
-    @IBInspectable open var moreTextColor: UIColor! = UIColor.white
-    @IBInspectable open var moreTextBackgroundColor: UIColor! = UIColor(white: 0.2, alpha: 0.6)
+    open var moreTextColor: UIColor! = UIColor.white
+    open var moreTextBackgroundColor: UIColor! = UIColor(white: 0.2, alpha: 0.6)
     open var moreTextFont: UIFont! = UIFont.systemFont(ofSize: 17)
     
     var layout: PhotoLayoutProtocol!
