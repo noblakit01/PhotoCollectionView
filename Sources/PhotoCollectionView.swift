@@ -25,6 +25,7 @@ import UIKit
 open class PhotoCollectionView: UIView {
     var photoViews: [PhotoView] = []
     var images: [UIImage?] = []
+    var urls: [String?] = []
     var numImage = 0
     
     weak open var dataSource: PhotoCollectionViewDataSource?
@@ -57,6 +58,7 @@ open class PhotoCollectionView: UIView {
             view.removeFromSuperview()
         }
         images.removeAll()
+        urls.removeAll()
     }
     
     func layoutFor(numImage: Int) -> PhotoLayoutProtocol {
@@ -88,20 +90,25 @@ open class PhotoCollectionView: UIView {
         let numShow = min(layout.maxPhoto, numImage)
         for i in 0..<numShow {
             let image = dataSource.photoCollectionView?(self, imageAt: i)
+            let url = dataSource.photoCollectionView?(self, urlImageAt: i)
             images.append(image)
+            urls.append(url?.absoluteString)
+            
             let frame = layout.frame(at: i, in: self)
             let photoView = PhotoView(frame: frame)
             photoView.tag = i
             
             if let image = image {
                 photoView.setImage(image)
-            } else if let url = dataSource.photoCollectionView?(self, urlImageAt: i) {
-                let absoluteString = url.absoluteString
+            } else if let url = url {
                 photoView.setUrl(url: url) { [weak self] (urlStr, image) in
                     guard let sSelf = self else {
                         return
                     }
-                    if absoluteString == urlStr, let image = image {
+                    guard i >= 0 && i < sSelf.urls.count else {
+                        return
+                    }
+                    if sSelf.urls[i] == urlStr, let image = image {
                         sSelf.images[i] = image
                         if i == 0 {
                             sSelf.reloadFrame()
