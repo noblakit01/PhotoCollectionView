@@ -131,14 +131,6 @@ open class PhotoCollectionView: UIView {
         delegate?.didChangeSize?(of: self)
     }
     
-    func reloadFrame(at index: Int, animated: Bool = true) {
-        guard index >= 0 && index < photoViews.count else {
-            return
-        }
-        let photoView = photoViews[index]
-        photoView.frame = layout.frame(at: index, in: self)
-    }
-    
     func image(at index: Int) -> UIImage? {
         guard index >= 0 && index < images.count else {
             return nil
