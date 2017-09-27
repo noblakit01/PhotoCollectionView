@@ -15,7 +15,9 @@ class URLTableViewCell: UITableViewCell {
     @IBOutlet weak var photoCollectionView: PhotoCollectionView!
     var urls: [String] = [] {
         didSet {
-            photoCollectionView.reloadData()
+            if urls != oldValue {
+                photoCollectionView.reloadData()
+            }
         }
     }
     
