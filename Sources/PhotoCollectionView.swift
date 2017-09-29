@@ -18,11 +18,13 @@ import UIKit
 @objc public protocol PhotoCollectionViewDelegate: NSObjectProtocol {
     @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didSelectImageAt index: Int)
     @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didCreated photoView: PhotoView, at index: Int) -> Void
+    @objc optional func didChangeSize(of photoCollectionView: PhotoCollectionView)
 }
 
 open class PhotoCollectionView: UIView {
     var photoViews: [PhotoView] = []
     var images: [UIImage?] = []
+    var urls: [String?] = []
     var numImage = 0
     
     weak open var dataSource: PhotoCollectionViewDataSource?
@@ -41,7 +43,7 @@ open class PhotoCollectionView: UIView {
     }
     
     override open var intrinsicContentSize: CGSize {
-        return layout.contentSize(of: self)
+        return layout != nil ? layout.contentSize(of: self) : bounds.size
     }
     
     override open func removeFromSuperview() {
@@ -55,6 +57,7 @@ open class PhotoCollectionView: UIView {
             view.removeFromSuperview()
         }
         images.removeAll()
+        urls.removeAll()
     }
     
     func layoutFor(numImage: Int) -> PhotoLayoutProtocol {
@@ -86,15 +89,31 @@ open class PhotoCollectionView: UIView {
         let numShow = min(layout.maxPhoto, numImage)
         for i in 0..<numShow {
             let image = dataSource.photoCollectionView?(self, imageAt: i)
+            let url = dataSource.photoCollectionView?(self, urlImageAt: i)
             images.append(image)
+            urls.append(url?.absoluteString)
+            
             let frame = layout.frame(at: i, in: self)
             let photoView = PhotoView(frame: frame)
             photoView.tag = i
             
             if let image = image {
                 photoView.setImage(image)
-            } else if let url = dataSource.photoCollectionView?(self, urlImageAt: i) {
-                photoView.setUrl(url: url)
+            } else if let url = url {
+                photoView.setUrl(url: url) { [weak self] (urlStr, image) in
+                    guard let sSelf = self else {
+                        return
+                    }
+                    guard i >= 0 && i < sSelf.urls.count else {
+                        return
+                    }
+                    if sSelf.urls[i] == urlStr, let image = image {
+                        sSelf.images[i] = image
+                        if i == 0 {
+                            sSelf.reloadFrame()
+                        }
+                    }
+                }
             }
             if numImage > layout.maxPhoto && i == numShow - 1 {
                 addMoreLabel(in: photoView, numMore: numImage - numShow)
@@ -108,6 +127,14 @@ open class PhotoCollectionView: UIView {
             delegate?.photoCollectionView?(self, didCreated: photoView, at: i)
         }
         invalidateIntrinsicContentSize()
+    }
+    
+    func reloadFrame() {
+        for (index, photoView) in photoViews.enumerated() {
+            photoView.frame = layout.frame(at: index, in: self)
+        }
+        invalidateIntrinsicContentSize()
+        delegate?.didChangeSize?(of: self)
     }
     
     func image(at index: Int) -> UIImage? {

@@ -22,6 +22,8 @@
 		0FA228271F5862E70027FDBD /* SingleLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA228261F5862E70027FDBD /* SingleLayout.swift */; };
 		0FF64EDC1F61908E002F2F8B /* TwoMainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF64EDB1F61908E002F2F8B /* TwoMainLayout.swift */; };
 		E5BC86CEA6D51902F094871C /* Pods_PhotoCollectionViewDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B231CCF5164F7C89A4B1A77B /* Pods_PhotoCollectionViewDemo.framework */; };
+		FD67CCA41F7226D700599337 /* URLDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD67CCA31F7226D700599337 /* URLDemoViewController.swift */; };
+		FD67CCA61F72274F00599337 /* URLTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD67CCA51F72274F00599337 /* URLTableViewCell.swift */; };
 		OBJ_22 /* PhotoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* PhotoCollectionView.swift */; };
 		OBJ_23 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* PhotoView.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +49,8 @@
 		B231CCF5164F7C89A4B1A77B /* Pods_PhotoCollectionViewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoCollectionViewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A0A4A9CDFDB3F5E2E64CBF /* Pods_PhotoCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2238AC62168DAAC5CB3B3E2 /* Pods-PhotoCollectionViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoCollectionViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoCollectionViewDemo/Pods-PhotoCollectionViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		FD67CCA31F7226D700599337 /* URLDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLDemoViewController.swift; sourceTree = "<group>"; };
+		FD67CCA51F72274F00599337 /* URLTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTableViewCell.swift; sourceTree = "<group>"; };
 		OBJ_10 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		OBJ_15 /* PhotoCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PhotoCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				0F3BD7501F1E5B880003A218 /* LaunchScreen.storyboard */,
 				0F3BD7531F1E5B880003A218 /* Info.plist */,
 				0F38C9801F6449DA005D2252 /* TableViewCell.swift */,
+				FD67CCA31F7226D700599337 /* URLDemoViewController.swift */,
+				FD67CCA51F72274F00599337 /* URLTableViewCell.swift */,
 			);
 			path = PhotoCollectionViewDemo;
 			sourceTree = "<group>";
@@ -340,7 +346,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD67CCA61F72274F00599337 /* URLTableViewCell.swift in Sources */,
 				0F38C9811F6449DA005D2252 /* TableViewCell.swift in Sources */,
+				FD67CCA41F7226D700599337 /* URLDemoViewController.swift in Sources */,
 				0F3BD74A1F1E5B880003A218 /* ViewController.swift in Sources */,
 				0F3BD7481F1E5B880003A218 /* AppDelegate.swift in Sources */,
 			);
@@ -539,8 +547,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -560,8 +568,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
