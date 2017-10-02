@@ -119,6 +119,8 @@ extension ViewController: PhotoCollectionViewDelegate {
 }
 ```
 
+## [TODO](https://github.com/noblakit01/PhotoCollectionView/blob/master/TODO.md)
+
 ## Author
 
 Luan Tran - noblakit01@gmail.com
