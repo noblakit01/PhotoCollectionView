@@ -65,6 +65,4 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
-PhotoCollectionView.xcodeproj/xcshareddata
-PhotoCollectionView.xcodeproj/project.xcworkspace
 Pods
