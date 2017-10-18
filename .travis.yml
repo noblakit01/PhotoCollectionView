@@ -1,0 +1,7 @@
+language: objective-c
+osx_image: xcode8.3
+
+script:
+- xcodebuild build -workspace PhotoCollectionView.xcworkspace -scheme PhotoCollectionView -sdk iphonesimulator
+- xcodebuild build -workspace PhotoCollectionView.xcworkspace -scheme PhotoCollectionViewDemo -sdk iphonesimulator
+- xcodebuild build -workspace PhotoCollectionView.xcworkspace -scheme PhotoCollectionView -sdk iphoneos
