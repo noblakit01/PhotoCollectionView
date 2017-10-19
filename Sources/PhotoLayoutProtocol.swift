@@ -25,4 +25,5 @@ extension PhotoLayoutProtocol {
     func contentSize(of photoCollectionView: PhotoCollectionView) -> CGSize {
         return photoCollectionView.bounds.size
     }
+    
 }

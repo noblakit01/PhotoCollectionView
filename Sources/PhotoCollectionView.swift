@@ -168,6 +168,5 @@ open class PhotoCollectionView: UIView {
             ]
         photoView.addConstraints(constraints)
     }
+    
 }
-
-

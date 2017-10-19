@@ -10,9 +10,9 @@ import UIKit
 import PhotoCollectionView
 
 class URLTableViewCell: UITableViewCell {
-
     
     @IBOutlet weak var photoCollectionView: PhotoCollectionView!
+    
     var urls: [String] = [] {
         didSet {
             if urls != oldValue {
@@ -30,6 +30,7 @@ class URLTableViewCell: UITableViewCell {
 }
 
 extension URLTableViewCell: PhotoCollectionViewDataSource {
+    
     func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int {
         return urls.count
     }
@@ -37,4 +38,5 @@ extension URLTableViewCell: PhotoCollectionViewDataSource {
     func photoCollectionView(_ photoCollectionView: PhotoCollectionView, urlImageAt index: Int) -> URL? {
         return URL(string: urls[index])
     }
+    
 }
