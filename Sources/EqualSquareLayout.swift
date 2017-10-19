@@ -32,4 +32,5 @@ class EqualSquareLayout: PhotoLayoutProtocol {
         let bounds = photoCollectionView.bounds
         return CGSize(width: bounds.width, height: bounds.width)
     }
+    
 }

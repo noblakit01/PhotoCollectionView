@@ -34,4 +34,5 @@ class SingleLayout: PhotoLayoutProtocol {
     func contentSize(of photoCollectionView: PhotoCollectionView) -> CGSize {
         return contentSize
     }
+    
 }
