@@ -37,9 +37,11 @@ class URLDemoViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = nil
     }
+    
 }
 
 extension URLDemoViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return urls.count
     }
@@ -50,11 +52,14 @@ extension URLDemoViewController: UITableViewDataSource {
         cell.photoCollectionView.delegate = self
         return cell
     }
+    
 }
 
 extension URLDemoViewController: PhotoCollectionViewDelegate {
+    
     func didChangeSize(of photoCollectionView: PhotoCollectionView) {
         tableView.beginUpdates()
         tableView.endUpdates()
     }
+    
 }
