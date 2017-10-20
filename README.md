@@ -1,4 +1,7 @@
 # PhotoCollectionView
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/48765cde3eb542288c8e90d47f8fa400)](https://www.codacy.com/app/noblakit01/PhotoCollectionView?utm_source=github.com&utm_medium=referral&utm_content=noblakit01/PhotoCollectionView&utm_campaign=badger)
+
 Custom CollectionView like as Facebook Feed for iOS 
 
 ## Overview
