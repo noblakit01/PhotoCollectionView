@@ -12,6 +12,7 @@ import PhotoCollectionView
 class URLTableViewCell: UITableViewCell {
     
     @IBOutlet weak var photoCollectionView: PhotoCollectionView!
+    @IBOutlet weak var indexLabel: UILabel!
     
     var urls: [String] = [] {
         didSet {

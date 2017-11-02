@@ -50,6 +50,7 @@ extension URLDemoViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! URLTableViewCell
         cell.urls = urls[indexPath.row]
         cell.photoCollectionView.delegate = self
+        cell.indexLabel.text = "Cell \(indexPath.row)"
         return cell
     }
     
