@@ -12,6 +12,8 @@ import PhotoCollectionView
 class TableViewCell: UITableViewCell {
 
     @IBOutlet weak var photoCollectionView: PhotoCollectionView!
+    @IBOutlet weak var indexLabel: UILabel!
+    
     var images: [UIImage] = [] {
         didSet {
             photoCollectionView.reloadData()

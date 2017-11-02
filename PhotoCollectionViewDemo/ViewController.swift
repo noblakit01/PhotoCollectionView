@@ -49,6 +49,7 @@ extension ViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.images = images[indexPath.row]
+        cell.indexLabel.text = "Cell \(indexPath.row)"
         return cell
     }
     
