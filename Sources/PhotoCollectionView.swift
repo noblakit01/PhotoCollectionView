@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyImageCache
 
 @objc public protocol PhotoCollectionViewDataSource: NSObjectProtocol {
     func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int
@@ -88,8 +89,13 @@ open class PhotoCollectionView: UIView {
         layout = layoutFor(numImage: numImage)
         let numShow = min(layout.maxPhoto, numImage)
         for i in 0..<numShow {
-            let image = dataSource.photoCollectionView?(self, imageAt: i)
+            var image = dataSource.photoCollectionView?(self, imageAt: i)
             let url = dataSource.photoCollectionView?(self, urlImageAt: i)
+            if image == nil,
+                let urlAbsoluteString = url?.absoluteString,
+                let cacheImage = ImageCache.default.image(of: urlAbsoluteString) {
+                image = cacheImage
+            }
             images.append(image)
             urls.append(url?.absoluteString)
             
