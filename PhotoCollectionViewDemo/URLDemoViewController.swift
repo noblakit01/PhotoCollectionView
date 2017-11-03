@@ -48,9 +48,9 @@ extension URLDemoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! URLTableViewCell
-        cell.urls = urls[indexPath.row]
         cell.photoCollectionView.delegate = self
         cell.indexLabel.text = "Cell \(indexPath.row)"
+        cell.urls = urls[indexPath.row]
         return cell
     }
     
