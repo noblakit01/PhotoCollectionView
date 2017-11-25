@@ -32,6 +32,6 @@ Pod::Spec.new do |s|
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.source_files  = "Sources/*.swift"
   s.requires_arc = true
-  s.dependency "SwiftyImageCache", "~> 1.1.1"  
+  s.dependency "SwiftyImageCache", "~> 1.2.0"  
 
 end
