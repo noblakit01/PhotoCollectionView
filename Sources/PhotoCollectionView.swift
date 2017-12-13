@@ -36,8 +36,7 @@ open class PhotoCollectionView: UIView {
     open var moreTextFont: UIFont! = UIFont.systemFont(ofSize: 17)
     
     var layout: PhotoLayoutProtocol!
-    
-    override open var bounds: CGRect    
+      
     override open var intrinsicContentSize: CGSize {
         return layout != nil ? layout.contentSize(of: self) : bounds.size
     }
