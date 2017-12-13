@@ -57,11 +57,11 @@ extension URLDemoViewController: UITableViewDataSource {
 extension URLDemoViewController: PhotoCollectionViewDelegate {
     
     func didChangeSize(of photoCollectionView: PhotoCollectionView) {
-        update(height: photoCollectionView.frame.height, at: photoCollectionView.tag)
+        update(height: photoCollectionView.intrinsicContentSize.height, at: photoCollectionView.tag)
     }
     
     func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didCreated photoView: PhotoView, at index: Int) {
-        update(height: photoCollectionView.frame.height, at: photoCollectionView.tag)
+        update(height: photoCollectionView.intrinsicContentSize.height, at: photoCollectionView.tag)
     }
     
     func update(height: CGFloat, at index: Int) {
@@ -69,6 +69,7 @@ extension URLDemoViewController: PhotoCollectionViewDelegate {
         
         if let cell = tableView.cellForRow(at: indexPath) as? URLTableViewCell {
             cell.photoCollectionViewHeight.constant = height
+            
             tableView.beginUpdates()
             tableView.endUpdates()
         }
