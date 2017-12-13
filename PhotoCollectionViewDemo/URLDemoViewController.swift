@@ -33,8 +33,6 @@ class URLDemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 200
-        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = nil
     }
     
@@ -48,8 +46,8 @@ extension URLDemoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! URLTableViewCell
+        cell.set(index: indexPath.row)
         cell.photoCollectionView.delegate = self
-        cell.indexLabel.text = "Cell \(indexPath.row)"
         cell.urls = urls[indexPath.row]
         return cell
     }
@@ -59,8 +57,16 @@ extension URLDemoViewController: UITableViewDataSource {
 extension URLDemoViewController: PhotoCollectionViewDelegate {
     
     func didChangeSize(of photoCollectionView: PhotoCollectionView) {
-        tableView.beginUpdates()
-        tableView.endUpdates()
+        
+        let height = photoCollectionView.frame.height
+        let index = photoCollectionView.tag
+        let indexPath = IndexPath(item: index, section: 0)
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? URLTableViewCell {
+            cell.photoCollectionViewHeight.constant = height
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
     }
     
 }

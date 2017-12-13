@@ -139,7 +139,6 @@ open class PhotoCollectionView: UIView {
         for (index, photoView) in photoViews.enumerated() {
             photoView.frame = layout.frame(at: index, in: self)
         }
-        invalidateIntrinsicContentSize()
         delegate?.didChangeSize?(of: self)
     }
     
