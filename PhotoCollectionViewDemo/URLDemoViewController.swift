@@ -57,9 +57,14 @@ extension URLDemoViewController: UITableViewDataSource {
 extension URLDemoViewController: PhotoCollectionViewDelegate {
     
     func didChangeSize(of photoCollectionView: PhotoCollectionView) {
-        
-        let height = photoCollectionView.frame.height
-        let index = photoCollectionView.tag
+        update(height: photoCollectionView.frame.height, at: photoCollectionView.tag)
+    }
+    
+    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didCreated photoView: PhotoView, at index: Int) {
+        update(height: photoCollectionView.frame.height, at: photoCollectionView.tag)
+    }
+    
+    func update(height: CGFloat, at index: Int) {
         let indexPath = IndexPath(item: index, section: 0)
         
         if let cell = tableView.cellForRow(at: indexPath) as? URLTableViewCell {
