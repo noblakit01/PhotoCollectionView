@@ -171,14 +171,14 @@
                                                         <constraint firstItem="Mh1-2S-eKW" firstAttribute="leading" secondItem="ot5-QN-aEC" secondAttribute="leading" constant="12" id="Glx-RO-545"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Mh1-2S-eKW" secondAttribute="trailing" constant="8" id="VU4-zM-xXV"/>
                                                         <constraint firstItem="Mh1-2S-eKW" firstAttribute="centerY" secondItem="ot5-QN-aEC" secondAttribute="centerY" id="iJh-9p-NsL"/>
-                                                        <constraint firstAttribute="height" constant="60" id="ja5-b2-cQx"/>
+                                                        <constraint firstAttribute="height" priority="750" constant="60" id="ja5-b2-cQx"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWL-7q-Ovo" customClass="PhotoCollectionView" customModule="PhotoCollectionView">
                                                     <rect key="frame" x="0.0" y="60" width="375" height="120"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="120" id="UjT-b1-jdQ"/>
+                                                        <constraint firstAttribute="height" priority="750" constant="120" id="UjT-b1-jdQ"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
