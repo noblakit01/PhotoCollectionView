@@ -149,11 +149,11 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="120" id="xYg-hd-4T6" customClass="URLTableViewCell" customModule="PhotoCollectionViewDemo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="180" id="xYg-hd-4T6" customClass="URLTableViewCell" customModule="PhotoCollectionViewDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xYg-hd-4T6" id="xfi-uh-vKJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="179.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ot5-QN-aEC">
@@ -175,10 +175,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWL-7q-Ovo" customClass="PhotoCollectionView" customModule="PhotoCollectionView">
-                                                    <rect key="frame" x="0.0" y="60" width="375" height="59.5"/>
+                                                    <rect key="frame" x="0.0" y="60" width="375" height="120"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="UjT-b1-jdQ"/>
+                                                        <constraint firstAttribute="height" constant="120" id="UjT-b1-jdQ"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>

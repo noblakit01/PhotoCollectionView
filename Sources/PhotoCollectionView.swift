@@ -37,12 +37,7 @@ open class PhotoCollectionView: UIView {
     
     var layout: PhotoLayoutProtocol!
     
-    override open var bounds: CGRect {
-        didSet {
-            reloadData()
-        }
-    }
-    
+    override open var bounds: CGRect    
     override open var intrinsicContentSize: CGSize {
         return layout != nil ? layout.contentSize(of: self) : bounds.size
     }
