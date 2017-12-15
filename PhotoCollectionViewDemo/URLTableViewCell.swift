@@ -19,6 +19,7 @@ class URLTableViewCell: UITableViewCell {
         didSet {
             if urls != oldValue {
                 photoCollectionView.reloadData()
+                photoCollectionViewHeight.constant = photoCollectionView.intrinsicContentSize.height
             }
         }
     }
