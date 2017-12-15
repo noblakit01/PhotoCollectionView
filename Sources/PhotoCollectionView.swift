@@ -86,8 +86,8 @@ open class PhotoCollectionView: UIView {
             var image = dataSource.photoCollectionView?(self, imageAt: i)
             let url = dataSource.photoCollectionView?(self, urlImageAt: i)
             if image == nil,
-                let urlAbsoluteString = url?.absoluteString,
-                let cacheImage = ImageCache.default.image(of: urlAbsoluteString) {
+                let url = url,
+                let cacheImage = ImageCache.default.image(of: url) {
                 image = cacheImage
             }
             images.append(image)
