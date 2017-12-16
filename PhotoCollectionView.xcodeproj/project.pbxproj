@@ -218,7 +218,11 @@
 				TargetAttributes = {
 					0F3BD7441F1E5B870003A218 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = TMH6L6FX6W;
 						ProvisioningStyle = Automatic;
+					};
+					OBJ_16 = {
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -415,6 +419,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = TMH6L6FX6W;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -467,6 +472,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = TMH6L6FX6W;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -493,6 +499,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8AFFE575DCA5992B0ABFF7F2 /* Pods-PhotoCollectionView.debug.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -507,6 +516,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = PhotoCollectionView;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				TARGET_NAME = PhotoCollectionView;
 			};
@@ -516,6 +526,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A59E36DFC3CD24C195800490 /* Pods-PhotoCollectionView.release.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -530,6 +543,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = PhotoCollectionView;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				TARGET_NAME = PhotoCollectionView;
 			};

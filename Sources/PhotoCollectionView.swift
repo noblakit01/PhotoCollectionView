@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyImageCache
 
 @objc public protocol PhotoCollectionViewDataSource: NSObjectProtocol {
     func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int
@@ -35,13 +36,7 @@ open class PhotoCollectionView: UIView {
     open var moreTextFont: UIFont! = UIFont.systemFont(ofSize: 17)
     
     var layout: PhotoLayoutProtocol!
-    
-    override open var bounds: CGRect {
-        didSet {
-            reloadData()
-        }
-    }
-    
+      
     override open var intrinsicContentSize: CGSize {
         return layout != nil ? layout.contentSize(of: self) : bounds.size
     }
@@ -88,8 +83,13 @@ open class PhotoCollectionView: UIView {
         layout = layoutFor(numImage: numImage)
         let numShow = min(layout.maxPhoto, numImage)
         for i in 0..<numShow {
-            let image = dataSource.photoCollectionView?(self, imageAt: i)
+            var image = dataSource.photoCollectionView?(self, imageAt: i)
             let url = dataSource.photoCollectionView?(self, urlImageAt: i)
+            if image == nil,
+                let url = url,
+                let cacheImage = ImageCache.default.image(of: url) {
+                image = cacheImage
+            }
             images.append(image)
             urls.append(url?.absoluteString)
             
@@ -133,7 +133,6 @@ open class PhotoCollectionView: UIView {
         for (index, photoView) in photoViews.enumerated() {
             photoView.frame = layout.frame(at: index, in: self)
         }
-        invalidateIntrinsicContentSize()
         delegate?.didChangeSize?(of: self)
     }
     

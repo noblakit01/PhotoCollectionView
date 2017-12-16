@@ -12,11 +12,14 @@ import PhotoCollectionView
 class URLTableViewCell: UITableViewCell {
     
     @IBOutlet weak var photoCollectionView: PhotoCollectionView!
+    @IBOutlet weak var indexLabel: UILabel!
+    @IBOutlet weak var photoCollectionViewHeight: NSLayoutConstraint!
     
     var urls: [String] = [] {
         didSet {
             if urls != oldValue {
                 photoCollectionView.reloadData()
+                photoCollectionViewHeight.constant = photoCollectionView.intrinsicContentSize.height
             }
         }
     }
@@ -25,6 +28,11 @@ class URLTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         photoCollectionView.dataSource = self
+    }
+    
+    func set(index: Int) {
+        photoCollectionView.tag = index
+        indexLabel.text = "Cell \(index)"
     }
 
 }

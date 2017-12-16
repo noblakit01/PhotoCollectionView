@@ -33,8 +33,6 @@ class URLDemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 200
-        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = nil
     }
     
@@ -48,8 +46,9 @@ extension URLDemoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! URLTableViewCell
-        cell.urls = urls[indexPath.row]
+        cell.set(index: indexPath.row)
         cell.photoCollectionView.delegate = self
+        cell.urls = urls[indexPath.row]
         return cell
     }
     
@@ -58,8 +57,22 @@ extension URLDemoViewController: UITableViewDataSource {
 extension URLDemoViewController: PhotoCollectionViewDelegate {
     
     func didChangeSize(of photoCollectionView: PhotoCollectionView) {
-        tableView.beginUpdates()
-        tableView.endUpdates()
+        update(height: photoCollectionView.intrinsicContentSize.height, at: photoCollectionView.tag)
+    }
+    
+    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, didCreated photoView: PhotoView, at index: Int) {
+        update(height: photoCollectionView.intrinsicContentSize.height, at: photoCollectionView.tag)
+    }
+    
+    func update(height: CGFloat, at index: Int) {
+        let indexPath = IndexPath(item: index, section: 0)
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? URLTableViewCell {
+            cell.photoCollectionViewHeight.constant = height
+            
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
     }
     
 }
