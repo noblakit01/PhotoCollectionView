@@ -143,7 +143,7 @@ open class PhotoCollectionView: UIView {
         return images[index]
     }
     
-    func tapPhotoView(sender: UITapGestureRecognizer) {
+    @objc func tapPhotoView(sender: UITapGestureRecognizer) {
         if let tag = sender.view?.tag {
             delegate?.photoCollectionView?(self, didSelectImageAt: tag)
         }
