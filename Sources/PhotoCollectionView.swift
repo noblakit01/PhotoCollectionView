@@ -84,12 +84,18 @@ open class PhotoCollectionView: UIView {
         layout = layoutFor(numImage: numImage)
         let numShow = min(layout.maxPhoto, numImage)
         for i in 0..<numShow {
-            var image = dataSource.photoCollectionView?(self, imageAt: i)
-            let url = dataSource.photoCollectionView?(self, urlImageAt: i)
-            if image == nil,
-                let url = url,
-                let cacheImage = ImageCache.default.image(of: url) {
-                image = cacheImage
+            let photoSource = dataSource.photoCollectionView(self, photoSource: i)
+            var image: UIImage?
+            var url: URL?
+            switch photoSource {
+            case .image(let img):
+                image = img
+                urls.append(nil)
+            case .url(let URL):
+                if let cacheImage = ImageCache.default.image(of: URL) {
+                    image = cacheImage
+                }
+                url = URL
             }
             images.append(image)
             urls.append(url?.absoluteString)
