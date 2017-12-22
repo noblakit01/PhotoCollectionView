@@ -89,7 +89,7 @@ open class PhotoCollectionView: UIView {
                 image = img
                 urls.append(nil)
             case .url(let URL):
-                if let cacheImage = ImageCache.default.image(of: URL) {
+                if let imageUrl = URL, let cacheImage = ImageCache.default.image(of: imageUrl) {
                     image = cacheImage
                 }
                 url = URL

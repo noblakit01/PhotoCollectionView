@@ -8,6 +8,6 @@
 import UIKit
 
 public enum PhotoSource {
-    case image(UIImage)
-    case url(URL)
+    case image(UIImage?)
+    case url(URL?)
 }
