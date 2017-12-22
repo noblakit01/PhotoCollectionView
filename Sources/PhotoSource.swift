@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum PhotoSource {
+public enum PhotoSource {
     case image(UIImage)
     case url(URL)
 }
