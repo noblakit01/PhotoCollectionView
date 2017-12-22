@@ -11,6 +11,7 @@ import SwiftyImageCache
 
 @objc public protocol PhotoCollectionViewDataSource: NSObjectProtocol {
     func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int
+    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, photoSource index: Int) -> PhotoSource
     
     @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage?
     @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, urlImageAt index: Int) -> URL?
