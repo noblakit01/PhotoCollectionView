@@ -30,12 +30,12 @@ class TableViewCell: UITableViewCell {
 
 extension TableViewCell: PhotoCollectionViewDataSource {
     
-    func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int {
-        return images.count
+    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, photoSource index: Int) -> PhotoSource {
+        return PhotoSource.image(images[index])
     }
     
-    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage? {
-        return images[index]
+    func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int {
+        return images.count
     }
     
 }

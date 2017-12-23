@@ -9,11 +9,9 @@
 import UIKit
 import SwiftyImageCache
 
-@objc public protocol PhotoCollectionViewDataSource: NSObjectProtocol {
+public protocol PhotoCollectionViewDataSource: NSObjectProtocol {
     func numPhotos(in photoCollectionView: PhotoCollectionView) -> Int
-    
-    @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage?
-    @objc optional func photoCollectionView(_ photoCollectionView: PhotoCollectionView, urlImageAt index: Int) -> URL?
+    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, photoSource index: Int) -> PhotoSource
 }
 
 @objc public protocol PhotoCollectionViewDelegate: NSObjectProtocol {
@@ -83,12 +81,18 @@ open class PhotoCollectionView: UIView {
         layout = layoutFor(numImage: numImage)
         let numShow = min(layout.maxPhoto, numImage)
         for i in 0..<numShow {
-            var image = dataSource.photoCollectionView?(self, imageAt: i)
-            let url = dataSource.photoCollectionView?(self, urlImageAt: i)
-            if image == nil,
-                let url = url,
-                let cacheImage = ImageCache.default.image(of: url) {
-                image = cacheImage
+            let photoSource = dataSource.photoCollectionView(self, photoSource: i)
+            var image: UIImage?
+            var url: URL?
+            switch photoSource {
+            case .image(let img):
+                image = img
+                urls.append(nil)
+            case .url(let URL):
+                if let imageUrl = URL, let cacheImage = ImageCache.default.image(of: imageUrl) {
+                    image = cacheImage
+                }
+                url = URL
             }
             images.append(image)
             urls.append(url?.absoluteString)
