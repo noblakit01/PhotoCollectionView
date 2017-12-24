@@ -87,15 +87,10 @@ extension ViewController: PhotoCollectionViewDataSource {
         return 10
     }
     
-    // You can use image for data
-    func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage? {
-    	// return image need to show.
-        return UIImage(named: "image\(index + 1)")
-    }
-
-    // or use image url
-    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, urlImageAt index: Int) -> URL? {
-        return URL(string: *your image URL here*)
+    // Use PhotoSource to set data
+    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, photoSource index: Int) -> PhotoSource {
+        return .url(URL(string: *URL of photo*)) 
+        // or return .image(*UIImage of photo*)
     }
 
 }
