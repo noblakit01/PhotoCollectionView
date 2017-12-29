@@ -34,7 +34,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'PhotoCollectionView', '~> 1.5.1' 
+pod 'PhotoCollectionView', '~> 1.5.2' 
 ```
 
 Then, run the following command:
@@ -87,17 +87,10 @@ extension ViewController: PhotoCollectionViewDataSource {
         return 10
     }
     
-    // You can use image for data
-    func photoColletionView(_ photoCollectionView: PhotoCollectionView, imageAt index: Int) -> UIImage? {
-    	// return image need to show.
-        return UIImage(named: "image\(index + 1)")
+    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, photoSource index: Int) -> PhotoSource {
+        return .url(URL(string: urls[index]))
+        // or return .image(*your image*)
     }
-
-    // or use image url
-    func photoCollectionView(_ photoCollectionView: PhotoCollectionView, urlImageAt index: Int) -> URL? {
-        return URL(string: *your image URL here*)
-    }
-
 }
 ```
 
