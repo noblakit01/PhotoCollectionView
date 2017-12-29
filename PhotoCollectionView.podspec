@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "PhotoCollectionView"
-  s.version      = "1.5.1"
+  s.version      = "1.5.2"
   s.summary      = "Custom CollectionView like as Facebook Feed for iOS."
   s.description  = <<-DESC
                   Simple and highly customizable iOS list image for feed, in Swift. Like Facebook feed.
@@ -32,6 +32,6 @@ Pod::Spec.new do |s|
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.source_files  = "Sources/*.swift"
   s.requires_arc = true
-  s.dependency "SwiftyImageCache", "~> 1.2.1"  
+  s.dependency "SwiftyImageCache", "~> 1.2.2"  
 
 end
